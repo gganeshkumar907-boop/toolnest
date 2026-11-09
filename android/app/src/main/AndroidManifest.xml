@@ -3,6 +3,7 @@
     <application
         android:allowBackup="false"
         android:label="ToolNest"
+        android:icon="@drawable/ic_toolnest"
         android:usesCleartextTraffic="false"
         android:theme="@android:style/Theme.Material.Light.NoActionBar">
         <activity
