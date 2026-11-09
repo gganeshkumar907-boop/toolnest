@@ -15,6 +15,7 @@ import android.webkit.WebResourceRequest;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.webkit.URLUtil;
 import android.widget.Toast;
 
 public class MainActivity extends Activity {
@@ -33,7 +34,8 @@ public class MainActivity extends Activity {
         settings.setJavaScriptEnabled(true);
         settings.setDomStorageEnabled(true);
         settings.setAllowFileAccess(false);
-        settings.setSupportMultipleWindows(true);
+        // Keep window.open() print dialogs in the same WebView; no unhandled popup window.
+        settings.setSupportMultipleWindows(false);
         settings.setJavaScriptCanOpenWindowsAutomatically(true);
         settings.setBuiltInZoomControls(false);
         settings.setDisplayZoomControls(false);
@@ -82,7 +84,8 @@ public class MainActivity extends Activity {
             request.setTitle("ToolNest download");
             request.setDescription("Downloading your file");
             request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
-            request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, "toolnest-download");
+            String fileName = URLUtil.guessFileName(url, contentDisposition, mimeType);
+            request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, fileName);
             ((DownloadManager) getSystemService(DOWNLOAD_SERVICE)).enqueue(request);
             Toast.makeText(this, "Download started.", Toast.LENGTH_SHORT).show();
         });
