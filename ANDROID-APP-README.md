@@ -4,9 +4,9 @@ This Android project wraps the published ToolNest website in a native Android We
 
 ## Current setup
 - Application ID: `com.toolnest.app`
-- Version: `1.0` (versionCode 1)
+- Version: `1.0` (versionCode 1), target API 36 (Android 16)
 - Website: https://gganeshkumar907-boop.github.io/toolnest/
-- Java 17, Android Gradle Plugin 8.7.3, Gradle 8.9
+- Java 17, Android Gradle Plugin 8.10.1, Gradle 8.11.1
 - GitHub Actions builds a debug APK and an unsigned release AAB.
 
 ## Build
