@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="ToolNest — handy free online tools for everyday tasks.">
+<meta name="description" content="ToolNest — free calculator, PDF, photo, resume and AI prompt tools in one place.">\n<meta name="theme-color" content="#070d25">
 <title>ToolNest — Free Online Tools</title>
 <style>
 :root{--bg:#f5f7fb;--card:#fff;--ink:#172033;--muted:#667085;--brand:#5b5ce2;--line:#e6e9f2;--green:#0d9466}
@@ -46,13 +46,41 @@ footer{color:#aabde2;border-color:#294b91}
 @media(max-width:760px){.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}.hero{margin-top:18px}}
 @media(max-width:480px){body{padding-bottom:92px}.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.card{padding:13px;border-radius:16px;min-width:0}.card h2{font-size:.94rem;line-height:1.22;padding-right:14px}.card p{font-size:.78rem;line-height:1.35;margin-bottom:10px}.card .icon{width:38px;height:38px;font-size:1.15rem}.card button:not(.fav-toggle){padding:9px 5px;font-size:.78rem;white-space:normal;min-height:38px}.fav-toggle{right:8px;top:8px;width:29px;height:29px}.hero h1{font-size:1.85rem}header{padding:17px 14px 27px}main{padding:0 11px}.bottom-nav{left:9px;right:9px;bottom:8px}}
 
-</style>
+
+/* ToolNest Premium Dark visual system */
+:root{--bg:#070d25;--card:#101a3b;--ink:#f5f7ff;--muted:#aab9dc;--brand:#6656f5;--line:#273b70}
+body{background:radial-gradient(ellipse at 15% -10%,#263b91 0,transparent 38%),radial-gradient(ellipse at 95% 10%,#27166d 0,transparent 32%),#070d25;color:#f5f7ff}
+header{background:linear-gradient(135deg,#090f2d 0%,#101b4a 55%,#21145e 100%);padding:18px 16px 30px;border-bottom:1px solid #263d7b}
+.brand-lockup{display:flex;align-items:center;gap:10px}.brand-mark{width:43px;height:43px;filter:drop-shadow(0 0 12px #1a8dff88)}.brand-mark svg{width:100%;height:100%}
+.logo{display:flex;flex-direction:column;font-size:1.45rem;line-height:1.05;letter-spacing:-.7px}.logo span{color:#24d9ff;display:inline}.logo small{font-size:.62rem;font-weight:500;letter-spacing:.1px;color:#a9b9e8;margin-top:4px}
+nav a{color:#c6d6ff}
+.hero{max-width:1080px;margin:23px auto 0}.welcome-card{position:relative;overflow:hidden;display:flex;align-items:center;justify-content:space-between;gap:14px;min-height:185px;padding:22px;border:1px solid #4564c2;border-radius:24px;background:linear-gradient(115deg,#182d70,#242078 58%,#41218b);box-shadow:0 18px 42px #02071688}
+.welcome-card:after{content:"";position:absolute;width:260px;height:260px;border-radius:50%;right:5%;top:-155px;background:#20bfff33;filter:blur(3px)}
+.welcome-card>div:first-child{position:relative;z-index:1}.eyebrow{font-size:.68rem;font-weight:800;letter-spacing:1.6px;color:#7deaff}.hero h1{font-size:clamp(1.75rem,5vw,2.6rem);line-height:1.08;margin:8px 0}.hero p{font-size:.92rem;color:#d2dcff;margin:0 0 16px}.hero-art{position:relative;z-index:1;display:grid;grid-template-columns:repeat(2,62px);gap:9px;transform:rotate(-7deg)}.hero-art span{display:grid;place-items:center;width:62px;height:62px;border-radius:17px;background:linear-gradient(145deg,#164f9c,#292078);border:1px solid #64bfff;box-shadow:0 0 18px #087cff55;font-size:1.8rem}
+.btn,button{background:linear-gradient(100deg,#087dff,#6651f4);border:1px solid #6abfff;box-shadow:0 5px 15px #0759ca44}.btn{gap:8px}
+main{max-width:1080px;margin:20px auto 38px}.section-heading{font-size:1.08rem;margin:19px 2px 10px;color:#f4f7ff}.section-row{display:flex;align-items:center;justify-content:space-between;margin-top:17px}.section-row .section-heading{margin:0}.section-note{font-size:.62rem;letter-spacing:1.1px;color:#8ba9e9;font-weight:800}
+.search{border-radius:16px;background:#101b3e;border:1px solid #35569c;padding:10px 13px;box-shadow:0 8px 26px #02081780}.search input{color:#fff}.search input::placeholder{color:#9eafd6}
+.search-status{color:#a8b9e1}.grid{gap:13px;margin-top:13px}
+.card{background:linear-gradient(145deg,#142b61,#101b43 72%);border:1px solid #34579b;border-radius:19px;padding:16px;box-shadow:0 9px 24px #02081780;color:#fff}
+.card:nth-child(even){background:linear-gradient(145deg,#1a2c69,#17194e 85%)}.card h2{font-size:1rem;color:#fff}.card p{color:#c0cfee}
+.card .icon{width:44px;height:44px;border-radius:14px;background:linear-gradient(145deg,#078cff,#5744e8);border:1px solid #65caff;color:#fff;box-shadow:0 4px 16px #087cff44}
+.card:nth-child(2) .icon{background:linear-gradient(145deg,#f0448c,#852de0)}.card:nth-child(3) .icon{background:linear-gradient(145deg,#00b99d,#087dce)}.card:nth-child(4) .icon{background:linear-gradient(145deg,#ff9b26,#ed4d62)}.card:nth-child(5) .icon{background:linear-gradient(145deg,#7954ff,#d23ecb)}.card:nth-child(6) .icon{background:linear-gradient(145deg,#087dff,#00b9d6)}
+.card button:not(.fav-toggle){width:100%;border-radius:11px;background:linear-gradient(100deg,#087dff,#6651f4)}
+.fav-toggle{background:#071638dd;border-color:#547bc3;box-shadow:none}
+.tool.card{background:linear-gradient(145deg,#101d49,#121b3c);border-color:#34579b}
+.tool input,.tool textarea,.tool select{background:#09132e;color:#fff;border-color:#35518a}
+.result{background:#103f43;color:#c6fff0}
+footer{color:#9aadd7;border-color:#263b70}
+.bottom-nav{background:#08132ff2;border-color:#34579b;box-shadow:0 10px 35px #000a}
+.bottom-nav button{box-shadow:none;border:0;background:transparent}.bottom-nav button.active{background:linear-gradient(135deg,#087cff,#5141dc)}
+@media(max-width:480px){.welcome-card{min-height:165px;padding:17px;border-radius:20px}.hero-art{grid-template-columns:repeat(2,48px);gap:7px}.hero-art span{width:48px;height:48px;font-size:1.4rem;border-radius:14px}.hero h1{font-size:1.65rem}.hero p{font-size:.82rem;max-width:220px}.brand-mark{width:39px;height:39px}.logo{font-size:1.35rem}.card{padding:13px}.section-heading{font-size:1rem}}
+\n</style>
 </head>
 <body>
-<header><nav><div class="logo">Tool<span>Nest</span></div><div class="nav-actions"><a href="#tools">Explore tools ↓</a><button id="themeToggle" type="button" aria-label="Switch color theme">🌙</button></div></nav><section class="hero"><div class="pill">✦ Simple tools. Less hassle.</div><h1>Your everyday tools,<br>all in one place.</h1><p>Quick, simple browser-based tools for calculations, names, images, PDFs and resumes. Free to try, with no account required.</p><a class="btn" href="#tools">Explore free tools</a></section></header>
+<header><nav><div class="brand-lockup"><div class="brand-mark" aria-hidden="true"><svg viewBox="0 0 64 64"><path d="M32 3 57 17v30L32 61 7 47V17Z" fill="none" stroke="url(#g)" stroke-width="5"/><g stroke="#36dfff" stroke-width="3" fill="#101b50"><path d="m20 22 12-7 12 7-12 7Z"/><path d="m20 42 12-7 12 7-12 7Z"/><path d="M32 27v8"/><path d="m20 22 12 13 12-13"/></g><circle cx="32" cy="35" r="5" fill="#21d9ff"/><defs><linearGradient id="g" x1="7" y1="3" x2="57" y2="61"><stop stop-color="#a35cff"/><stop offset="1" stop-color="#00e2df"/></linearGradient></defs></svg></div><div class="logo">Tool<span>Nest</span><small>Simple tools. Less hassle.</small></div></div><div class="nav-actions"><a href="#tools">Explore tools ↓</a><button id="themeToggle" type="button" aria-label="Switch color theme">🌙</button></div></nav><section class="hero"><div class="welcome-card"><div><span class="eyebrow">WELCOME TO TOOLNEST</span><h1>Your everyday tools,<br>all in one place.</h1><p>Useful little tools to save time and get more done.</p><a class="btn" href="#tools">Explore free tools <span aria-hidden="true">→</span></a></div><div class="hero-art" aria-hidden="true"><span>🧮</span><span>📄</span><span>🖼️</span><span>✨</span></div></div></section></header>
 <main id="tools">
-<div class="search"><span>⌕</span><input id="search" placeholder="Search tools (e.g. calculator, photo, resume)…" aria-label="Search tools"></div><p class="search-status" id="searchStatus" aria-live="polite">6 free tools ready to use — no sign-up needed.</p><div class="empty-state" id="emptyState">No tools found. Try “calculator”, “photo” or “resume”.</div>
-<div class="grid" id="cards">
+<h2 class="section-heading">Find the right tool</h2><div class="search"><span>⌕</span><input id="search" placeholder="Search tools (e.g. calculator, photo, resume)…" aria-label="Search tools"></div><p class="search-status" id="searchStatus" aria-live="polite">6 free tools ready to use — no sign-up needed.</p><div class="empty-state" id="emptyState">No tools found. Try “calculator”, “photo” or “resume”.</div>
+<div class="section-row"><h2 class="section-heading">Popular tools</h2><span class="section-note">QUICK ACCESS</span></div><div class="grid" id="cards">
 <article class="card" data-key="calculator maths percentage"><div class="icon">🧮</div><h2>Quick Calculator</h2><p>Work out everyday sums and percentages.</p><button onclick="openTool('calc')">Open calculator</button></article>
 <article class="card" data-key="name generator instagram username"><div class="icon">✨</div><h2>Name Generator</h2><p>Generate modern username ideas from a name or word.</p><button onclick="openTool('names')">Generate names</button></article>
 <article class="card" data-key="photo image compressor resize"><div class="icon">🖼️</div><h2>Photo Compressor</h2><p>Compress an image in your browser and save the result.</p><button onclick="openTool('photo')">Compress photo</button></article>
