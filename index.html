@@ -1,209 +1,106 @@
 <!doctype html>
-<html lang="en">
-<head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="AllToolNest — everyday calculator, PDF, photo, resume and AI helper tools in one app.">
-<meta name="theme-color" content="#070d25">
-<link rel="manifest" href="./manifest.webmanifest">
-<link rel="icon" href="./icon.svg" type="image/svg+xml">
-<title>AllToolNest — Everyday Tools in One App</title>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#080d25"><meta name="description" content="AllToolNest — simple tools in one app.">
+<link rel="manifest" href="./manifest.webmanifest"><link rel="icon" href="./icon.svg" type="image/svg+xml">
+<title>AllToolNest — Simple Tools. Less Hassle.</title>
 <style>
-:root{--bg:#f5f7fb;--card:#fff;--ink:#172033;--muted:#667085;--brand:#5b5ce2;--line:#e6e9f2;--green:#0d9466}
-*{box-sizing:border-box}body{margin:0;font:16px/1.5 system-ui,-apple-system,Segoe UI,Roboto,sans-serif;color:var(--ink);background:var(--bg)}
-header{background:linear-gradient(120deg,#171b3c,#4547b8 65%,#7778ef);color:white;padding:28px 18px 44px}
-nav,.wrap{max-width:1080px;margin:auto}nav{display:flex;align-items:center;justify-content:space-between;gap:12px} .logo{font-size:1.45rem;font-weight:850;letter-spacing:-.5px}.logo span{color:#bfc2ff}nav a{color:white;text-decoration:none;font-size:.92rem}nav .nav-actions{display:flex;align-items:center;gap:12px}#themeToggle{background:#ffffff20;border:1px solid #ffffff55;color:white;padding:8px 11px}
-.hero{max-width:1080px;margin:35px auto 0}.hero h1{font-size:clamp(2rem,5vw,3.5rem);line-height:1.08;margin:0 0 12px;letter-spacing:-1.5px}.hero p{max-width:620px;color:#e2e4ff;margin:0 0 22px}.pill{display:inline-block;background:#ffffff20;border:1px solid #ffffff35;border-radius:999px;padding:6px 11px;font-size:.82rem;margin-bottom:15px}
-main{max-width:1080px;margin:-22px auto 50px;padding:0 16px}.search{display:flex;gap:10px;background:white;padding:12px;border:1px solid var(--line);border-radius:16px;box-shadow:0 10px 30px #20244a10}.search input{flex:1;border:0;outline:0;min-width:0;padding:8px;font:inherit}
-.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:22px}.card{background:var(--card);border:1px solid var(--line);border-radius:17px;padding:20px;box-shadow:0 5px 20px #20244a05;transition:transform .18s ease,box-shadow .18s ease}.card:hover{transform:translateY(-3px);box-shadow:0 12px 28px #20244a12}.search:focus-within{border-color:var(--brand);box-shadow:0 0 0 3px #5b5ce222}.search-status{margin:12px 4px 0;color:var(--muted);font-size:.88rem}.empty-state{display:none;text-align:center;padding:28px;color:var(--muted);background:var(--card);border:1px dashed var(--line);border-radius:14px;margin-top:16px}body.dark{--bg:#111522;--card:#1b2232;--ink:#f2f4fb;--muted:#aab3c5;--line:#30394c}body.dark .search input,body.dark input,body.dark textarea,body.dark select{background:#141b29;color:var(--ink);border-color:#3a455b}body.dark .icon{background:#30304f}body.dark .result{background:#12372f;color:#b8f4dc}body.dark .btn.secondary,body.dark button.secondary{background:#30304f;color:#dedfff}.card h2{font-size:1.12rem;margin:9px 0 4px}.card p{color:var(--muted);font-size:.93rem;margin:0 0 14px}.icon{width:43px;height:43px;display:grid;place-items:center;background:#eeeeff;border-radius:13px;font-size:1.4rem}.btn,button{display:inline-flex;align-items:center;justify-content:center;border:0;border-radius:10px;background:var(--brand);color:white;padding:10px 14px;font:600 .92rem system-ui;cursor:pointer;text-decoration:none}.btn.secondary,button.secondary{background:#eff0ff;color:#393bb1}.tool{display:none;margin-top:20px}.tool.active{display:block}.tool h2{margin-top:0}.field{margin:12px 0}.field label{display:block;font-size:.9rem;font-weight:650;margin-bottom:6px}input,textarea,select{width:100%;padding:11px 12px;border:1px solid #d9deeb;border-radius:10px;font:inherit;background:white;color:var(--ink)}textarea{min-height:100px;resize:vertical}.result{margin-top:12px;padding:12px;border-radius:10px;background:#f0f9f5;color:#116447;overflow-wrap:anywhere}.muted{color:var(--muted);font-size:.9rem}.row{display:flex;gap:10px;flex-wrap:wrap}.row>*{flex:1;min-width:120px}footer{text-align:center;color:var(--muted);padding:28px 16px;border-top:1px solid var(--line);font-size:.9rem}
-@media(max-width:760px){.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.hero{margin-top:25px}}@media(max-width:480px){.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.card{padding:13px;border-radius:14px}.card h2{font-size:.98rem;line-height:1.25}.card p{font-size:.82rem;line-height:1.35;margin-bottom:11px}.card .icon{width:38px;height:38px;font-size:1.2rem}.card button{width:100%;padding:9px 6px;font-size:.82rem}header{padding:20px 15px 34px}.hero{margin-top:22px}.hero h1{font-size:2rem}.hero p{font-size:.92rem}main{padding:0 12px}}
-
-/* ToolNest app-style refresh */
-:root{--bg:#070f2b;--card:#101d49;--ink:#f4f7ff;--muted:#b8c6e8;--brand:#087cff;--line:#294b91;--green:#18c99a}
-html{scroll-behavior:smooth;scroll-padding-top:18px}
-body{background:radial-gradient(ellipse at top,#142d70 0,#070f2b 55%);color:var(--ink);padding-bottom:92px}
-header{background:linear-gradient(135deg,#06143c,#102c77 60%,#3321a4);padding:18px 16px 26px;border-bottom:1px solid #2756a8}
-nav,.wrap{max-width:1080px}
-.logo{font-size:1.7rem;letter-spacing:-1px}.logo span{color:#29d8ff}
-.hero{margin:20px auto 0}.hero h1{font-size:clamp(1.8rem,5vw,2.8rem);line-height:1.12}
-.hero p{color:#d3e1ff}.pill{background:#123b79;border-color:#2a78d7}
-main{margin:0 auto 38px;padding:0 16px}
-.search{background:#10275d;border:1px solid #3169c0;box-shadow:0 8px 26px #02081780}
-.search input{background:transparent;color:white}.search input::placeholder{color:#b7c9ed}
-.search span{color:#6ee7ff}.search-status{color:#a9c5f4}
-.grid{gap:13px;margin-top:18px}
-.card{position:relative;background:linear-gradient(145deg,#123d91,#142b76 60%,#27208b);border:1px solid #3478df;border-radius:18px;padding:16px;box-shadow:0 8px 22px #02081780;color:#fff}
-.card:nth-child(even){background:linear-gradient(145deg,#164a9f,#25218d)}
-.card h2{color:#fff;font-size:1.05rem}.card p{color:#d3e2ff}
-.card .icon{background:linear-gradient(145deg,#1a9fff,#4c46e8);border:1px solid #70caff;color:#fff}
-.card button:not(.fav-toggle){background:linear-gradient(90deg,#078cff,#5147ef);width:100%;border:1px solid #69baff}
-.tool.card{background:#101d49;border-color:#326ac4}
-.tool input,.tool textarea,.tool select{background:#0a1537;color:#fff;border-color:#34558f}
-.result{background:#103f43;color:#c6fff0}
-footer{color:#aabde2;border-color:#294b91}
-#themeToggle{display:none}
-.fav-toggle{position:absolute;right:11px;top:11px;width:34px;height:34px;padding:0;background:#061b49aa;border:1px solid #6ca9ff;border-radius:50%;color:#fff;font-size:18px;z-index:2}
-.bottom-nav{position:fixed;z-index:50;left:12px;right:12px;bottom:10px;max-width:560px;margin:auto;display:grid;grid-template-columns:repeat(4,1fr);gap:3px;padding:7px;background:#08163beF;border:1px solid #3169c0;border-radius:22px;box-shadow:0 10px 35px #0009;backdrop-filter:blur(14px)}
-.bottom-nav button{display:flex;flex-direction:column;align-items:center;gap:2px;background:transparent;color:#b9cbed;padding:7px 3px;border-radius:15px;font-size:.76rem}
-.bottom-nav button span{font-size:1.2rem;line-height:1.2}
-.bottom-nav button.active{background:linear-gradient(135deg,#087cff,#463be0);color:#fff}
-@media(max-width:760px){.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}.hero{margin-top:18px}}
-@media(max-width:480px){body{padding-bottom:92px}.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.card{padding:13px;border-radius:16px;min-width:0}.card h2{font-size:.94rem;line-height:1.22;padding-right:14px}.card p{font-size:.78rem;line-height:1.35;margin-bottom:10px}.card .icon{width:38px;height:38px;font-size:1.15rem}.card button:not(.fav-toggle){padding:9px 5px;font-size:.78rem;white-space:normal;min-height:38px}.fav-toggle{right:8px;top:8px;width:29px;height:29px}.hero h1{font-size:1.85rem}header{padding:17px 14px 27px}main{padding:0 11px}.bottom-nav{left:9px;right:9px;bottom:8px}}
-
-
-/* ToolNest Premium Dark visual system */
-:root{--bg:#070d25;--card:#101a3b;--ink:#f5f7ff;--muted:#aab9dc;--brand:#6656f5;--line:#273b70}
-body{background:radial-gradient(ellipse at 15% -10%,#263b91 0,transparent 38%),radial-gradient(ellipse at 95% 10%,#27166d 0,transparent 32%),#070d25;color:#f5f7ff}
-header{background:linear-gradient(135deg,#090f2d 0%,#101b4a 55%,#21145e 100%);padding:18px 16px 30px;border-bottom:1px solid #263d7b}
-.brand-lockup{display:flex;align-items:center;gap:10px}.brand-mark{width:43px;height:43px;filter:drop-shadow(0 0 12px #1a8dff88)}.brand-mark svg{width:100%;height:100%}
-.logo{display:flex;flex-direction:column;font-size:1.45rem;line-height:1.05;letter-spacing:-.7px}.logo span{color:#24d9ff;display:inline}.logo small{font-size:.62rem;font-weight:500;letter-spacing:.1px;color:#a9b9e8;margin-top:4px}
-nav a{color:#c6d6ff}
-.hero{max-width:1080px;margin:23px auto 0}.welcome-card{position:relative;overflow:hidden;display:flex;align-items:center;justify-content:space-between;gap:14px;min-height:185px;padding:22px;border:1px solid #4564c2;border-radius:24px;background:linear-gradient(115deg,#182d70,#242078 58%,#41218b);box-shadow:0 18px 42px #02071688}
-.welcome-card:after{content:"";position:absolute;width:260px;height:260px;border-radius:50%;right:5%;top:-155px;background:#20bfff33;filter:blur(3px)}
-.welcome-card>div:first-child{position:relative;z-index:1}.eyebrow{font-size:.68rem;font-weight:800;letter-spacing:1.6px;color:#7deaff}.hero h1{font-size:clamp(1.75rem,5vw,2.6rem);line-height:1.08;margin:8px 0}.hero p{font-size:.92rem;color:#d2dcff;margin:0 0 16px}.hero-art{position:relative;z-index:1;display:grid;grid-template-columns:repeat(2,62px);gap:9px;transform:rotate(-7deg)}.hero-art span{display:grid;place-items:center;width:62px;height:62px;border-radius:17px;background:linear-gradient(145deg,#164f9c,#292078);border:1px solid #64bfff;box-shadow:0 0 18px #087cff55;font-size:1.8rem}
-.btn,button{background:linear-gradient(100deg,#087dff,#6651f4);border:1px solid #6abfff;box-shadow:0 5px 15px #0759ca44}.btn{gap:8px}
-main{max-width:1080px;margin:20px auto 38px}.section-heading{font-size:1.08rem;margin:19px 2px 10px;color:#f4f7ff}.section-row{display:flex;align-items:center;justify-content:space-between;margin-top:17px}.section-row .section-heading{margin:0}.section-note{font-size:.62rem;letter-spacing:1.1px;color:#8ba9e9;font-weight:800}
-.search{border-radius:16px;background:#101b3e;border:1px solid #35569c;padding:10px 13px;box-shadow:0 8px 26px #02081780}.search input{color:#fff}.search input::placeholder{color:#9eafd6}
-.search-status{color:#a8b9e1}.grid{gap:13px;margin-top:13px}
-.card{background:linear-gradient(145deg,#142b61,#101b43 72%);border:1px solid #34579b;border-radius:19px;padding:16px;box-shadow:0 9px 24px #02081780;color:#fff}
-.card:nth-child(even){background:linear-gradient(145deg,#1a2c69,#17194e 85%)}.card h2{font-size:1rem;color:#fff}.card p{color:#c0cfee}
-.card .icon{width:44px;height:44px;border-radius:14px;background:linear-gradient(145deg,#078cff,#5744e8);border:1px solid #65caff;color:#fff;box-shadow:0 4px 16px #087cff44}
-.card:nth-child(2) .icon{background:linear-gradient(145deg,#f0448c,#852de0)}.card:nth-child(3) .icon{background:linear-gradient(145deg,#00b99d,#087dce)}.card:nth-child(4) .icon{background:linear-gradient(145deg,#ff9b26,#ed4d62)}.card:nth-child(5) .icon{background:linear-gradient(145deg,#7954ff,#d23ecb)}.card:nth-child(6) .icon{background:linear-gradient(145deg,#087dff,#00b9d6)}
-.card button:not(.fav-toggle){width:100%;border-radius:11px;background:linear-gradient(100deg,#087dff,#6651f4)}
-.fav-toggle{background:#071638dd;border-color:#547bc3;box-shadow:none}
-.tool.card{background:linear-gradient(145deg,#101d49,#121b3c);border-color:#34579b}
-.tool input,.tool textarea,.tool select{background:#09132e;color:#fff;border-color:#35518a}
-.result{background:#103f43;color:#c6fff0}
-footer{color:#9aadd7;border-color:#263b70}
-.bottom-nav{background:#08132ff2;border-color:#34579b;box-shadow:0 10px 35px #000a}
-.bottom-nav button{box-shadow:none;border:0;background:transparent}.bottom-nav button.active{background:linear-gradient(135deg,#087cff,#5141dc)}
-@media(max-width:480px){.welcome-card{min-height:165px;padding:17px;border-radius:20px}.hero-art{grid-template-columns:repeat(2,48px);gap:7px}.hero-art span{width:48px;height:48px;font-size:1.4rem;border-radius:14px}.hero h1{font-size:1.65rem}.hero p{font-size:.82rem;max-width:220px}.brand-mark{width:39px;height:39px}.logo{font-size:1.35rem}.card{padding:13px}.section-heading{font-size:1rem}}
-
-
-/* AllToolNest brand finish */
-.brand-lockup{gap:11px}
-.logo{font-weight:900;white-space:nowrap}
-.welcome-card{background:radial-gradient(circle at 78% 45%,#0759b8 0,#202079 38%,#111b50 100%)}
-.hero-art{grid-template-columns:repeat(3,54px);gap:8px}
-.hero-art span{width:54px;height:54px}
-.hero-art span:nth-child(1),.hero-art span:nth-child(4){background:linear-gradient(145deg,#154baf,#4a31bd)}
-.hero-art span:nth-child(2),.hero-art span:nth-child(5){background:linear-gradient(145deg,#087b9f,#1742a5)}
-.hero-art span:nth-child(3),.hero-art span:nth-child(6){background:linear-gradient(145deg,#5d2cc2,#172d80)}
-@media(max-width:480px){.hero-art{grid-template-columns:repeat(3,42px);gap:6px}.hero-art span{width:42px;height:42px;font-size:1.2rem}.logo{font-size:1.22rem}}
-
- 
-/* AllToolNest — reference-matched Premium Dark interface */
-:root{--bg:#070b20;--card:#111936;--ink:#f7f8ff;--muted:#aab4d2;--brand:#6551f5;--line:#27345f}
-body{background:radial-gradient(ellipse at 50% -20%,#272a71 0,transparent 48%),#070b20;color:var(--ink);padding-bottom:88px}
-header{background:linear-gradient(180deg,#080d25 0%,#0b1436 72%,#111a42 100%);padding:16px 18px 22px;border-bottom:1px solid #1d2c5a}
-.brand-lockup{gap:9px}.brand-mark{width:39px;height:39px}.logo{font-size:1.38rem;letter-spacing:-.7px}.logo span{color:#21d9ff}.logo small{font-size:.58rem;color:#a9b9df}
-nav a{color:#c5d5ff}
-.hero{max-width:1080px;margin:18px auto 0;padding:0 2px}
-.brand-banner{position:relative;display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:174px;padding:19px 18px;overflow:hidden;border:1px solid #284fba;border-radius:22px;background:radial-gradient(ellipse at 76% 50%,#073f9b 0,#11134d 36%,#030923 78%);box-shadow:0 10px 34px #02061b}
-.brand-banner:before{content:"";position:absolute;inset:auto -10% -42% -10%;height:90px;border-top:3px solid #05baff;border-radius:50%;transform:rotate(-5deg);filter:drop-shadow(0 0 9px #00bfff)}
-.brand-banner:after{content:"";position:absolute;inset:auto -10% -55% -10%;height:100px;border-top:2px solid #8b3bff;border-radius:50%;transform:rotate(-5deg);filter:drop-shadow(0 0 8px #7b2cff)}
-.banner-brand{position:relative;z-index:2;display:flex;align-items:center;gap:9px;min-width:0}.banner-mark{width:82px;height:82px;flex:none;filter:drop-shadow(0 0 10px #00d9ff88)}.banner-mark svg{width:100%;height:100%}
-.banner-brand strong{display:block;font-size:clamp(1.25rem,3vw,2.2rem);font-weight:900;letter-spacing:-1.2px;white-space:nowrap;color:#fff}.banner-brand strong span{color:#12e4f2}.banner-brand small{display:block;font-size:.65rem;color:#d6e4ff;font-weight:650;white-space:nowrap}
-.banner-hub{position:relative;z-index:1;width:205px;height:145px;flex:none}
-.hub-core{position:absolute;left:76px;top:50px;width:58px;height:58px;display:grid;place-items:center;border-radius:18px;background:linear-gradient(145deg,#0c8fff,#2224a1);border:2px solid #27dfff;box-shadow:0 0 20px #00bfff,0 0 36px #6a37ff66;color:#fff;font-size:1.8rem}
-.hub-tool{position:absolute;display:grid;place-items:center;width:42px;height:40px;border-radius:10px;background:linear-gradient(145deg,#152d70,#10113d);border:2px solid #36dfff;box-shadow:0 0 12px #08bfff88;color:#fff;font-size:1rem;font-weight:900}
-.hub-tool.photo{left:8px;top:7px}.hub-tool.video{right:8px;top:6px}.hub-tool.calc{left:0;bottom:8px}.hub-tool.edit{right:0;bottom:8px}.hub-tool.web{left:81px;top:0}.hub-tool.pdf{left:83px;bottom:0;color:#ff536e;font-size:.68rem}.hub-tool.code{right:3px;top:53px}
-.greeting-card{display:flex;align-items:center;gap:11px;margin:13px 0 16px;padding:13px 15px;border:1px solid #293d78;border-radius:17px;background:linear-gradient(100deg,#121d43,#1b2c59);box-shadow:0 7px 22px #02081788}
-.avatar{width:39px;height:39px;display:grid;place-items:center;flex:none;border-radius:50%;background:linear-gradient(135deg,#8161ff,#22bce9);color:white;font-weight:900}
-.greeting-card strong{font-size:.92rem;color:#fff}.greeting-card p{margin:2px 0 0;color:#b7c9ef;font-size:.78rem}.greeting-spark{margin-left:auto;color:#ffc84b;font-size:1.2rem}
-main{max-width:1080px;margin:10px auto 38px;padding:0 16px}
-.section-heading{font-size:1rem;font-weight:800;color:#f5f7ff;margin:18px 2px 10px}
-.search{display:flex;align-items:center;gap:10px;background:#111b3a;border:1px solid #33477f;border-radius:15px;padding:8px 13px;box-shadow:0 6px 20px #02081766}
-.search input{background:transparent;color:#fff;border:0;outline:0}.search input::placeholder{color:#9eafd6}.search span{color:#9cb6e9}
-.search-status{color:#8fa5d2;font-size:.78rem;margin:8px 4px}
-.section-row{display:flex;align-items:center;justify-content:space-between;margin:18px 0 8px}.section-row .section-heading{margin:0}.section-note{color:#9eafff;font-size:.72rem;font-weight:750}
-.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:11px;margin-top:10px}
-.card{position:relative;min-width:0;min-height:112px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;text-align:center;padding:13px 7px;border-radius:17px;border:1px solid #3b4fa0;background:linear-gradient(145deg,#2937b8,#20216c 72%,#101b4d);box-shadow:0 8px 20px #02081788;color:#fff;cursor:pointer;transition:transform .16s ease,border-color .16s ease}
-.card:nth-child(2){background:linear-gradient(145deg,#9b247e,#4c1c7c 80%)}.card:nth-child(3){background:linear-gradient(145deg,#087f8b,#064b70)}.card:nth-child(4){background:linear-gradient(145deg,#b75c19,#71351c)}.card:nth-child(5){background:linear-gradient(145deg,#7134b9,#341c79)}.card:nth-child(6){background:linear-gradient(145deg,#1748ba,#112d75)}
-.card:hover,.card:focus-visible{transform:translateY(-2px);border-color:#73dcff;outline:none;box-shadow:0 0 0 2px #2eafff55,0 10px 25px #020817}
-.card .icon{width:42px;height:42px;display:grid;place-items:center;border-radius:12px;background:linear-gradient(145deg,#31aaff,#5642f5);border:1px solid #90dcff;color:white;font-size:1.42rem;box-shadow:0 0 14px #148fff66}
-.card:nth-child(2) .icon{background:linear-gradient(145deg,#ed55c4,#8e42f4)}.card:nth-child(3) .icon{background:linear-gradient(145deg,#37e4c2,#0d9db2)}.card:nth-child(4) .icon{background:linear-gradient(145deg,#ffb347,#f16a31)}.card:nth-child(5) .icon{background:linear-gradient(145deg,#a76cff,#7236d5)}.card:nth-child(6) .icon{background:linear-gradient(145deg,#31aaff,#3450ed)}
-.card h2{margin:0;color:#fff;font-size:.84rem;line-height:1.2;padding:0}.card p,.card button:not(.fav-toggle){display:none}
-.fav-toggle{position:absolute;top:6px;right:6px;width:24px;height:24px;padding:0;border-radius:50%;font-size:.85rem;background:#080f2acc;border:1px solid #8ca8ff;box-shadow:none;color:#fff}
-.tool.card{display:none;align-items:stretch;text-align:left;min-height:0;padding:18px;background:linear-gradient(145deg,#111c42,#0c1530);border:1px solid #354a87;cursor:default}
-.tool.card.active{display:block}.tool h2{font-size:1.1rem;margin:0 0 8px}.tool input,.tool textarea,.tool select{background:#09132d;color:#fff;border-color:#354a7c}.tool .field label{color:#dbe5ff}
-.result{background:#103f43;color:#c6fff0;border:1px solid #246b65}
-footer{color:#879ac4;border-color:#24365f}
-.bottom-nav{background:#090f29f2;border:1px solid #344b89;box-shadow:0 10px 35px #000b;backdrop-filter:blur(18px)}
-.bottom-nav button{background:transparent;border:0;box-shadow:none;color:#a9b8dc}.bottom-nav button.active{background:linear-gradient(135deg,#263e9e,#4a35b7);color:#fff}
-@media(min-width:760px){.brand-banner{min-height:230px;padding:28px 35px}.banner-mark{width:105px;height:105px}.banner-hub{transform:scale(1.18);transform-origin:right center}.grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}.card{min-height:145px}.card .icon{width:52px;height:52px;font-size:1.7rem}.card h2{font-size:1rem}}
-@media(max-width:480px){header{padding:13px 12px 17px}.hero{margin-top:13px;padding:0}.brand-banner{min-height:148px;padding:13px 10px;border-radius:18px;gap:4px}.banner-mark{width:55px;height:55px}.banner-brand{gap:5px}.banner-brand strong{font-size:1.13rem;letter-spacing:-.8px}.banner-brand small{font-size:.48rem}.banner-hub{width:150px;height:115px;transform:scale(.82);transform-origin:right center;margin-left:-8px}.hub-core{left:55px;top:39px;width:47px;height:47px}.hub-tool{width:34px;height:33px;font-size:.8rem}.hub-tool.web{left:62px}.hub-tool.pdf{left:64px}.greeting-card{margin:10px 0 12px;padding:10px 12px}.avatar{width:34px;height:34px}main{padding:0 12px;margin-top:8px}.grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}.card{min-height:102px;padding:11px 4px;border-radius:14px;gap:7px}.card .icon{width:37px;height:37px;font-size:1.2rem}.card h2{font-size:.73rem;letter-spacing:-.1px}.fav-toggle{top:4px;right:4px;width:21px;height:21px;font-size:.75rem}.bottom-nav{left:8px;right:8px;bottom:7px;padding:6px}.bottom-nav button{font-size:.7rem}.bottom-nav button span{font-size:1.08rem}}
-@media(max-width:360px){.banner-brand strong{font-size:1rem}.banner-mark{width:48px;height:48px}.banner-hub{transform:scale(.72);margin-left:-20px}.card h2{font-size:.68rem}}
-
-</style>
-</head>
+:root{color-scheme:dark;--bg:#070b20;--panel:#101936;--panel2:#151f43;--ink:#f7f8ff;--muted:#aab7d7;--line:#26365f;--purple:#754cff;--cyan:#19d9f4}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(ellipse at 50% -20%,#22276b 0,transparent 46%),var(--bg);color:var(--ink);font:15px/1.45 Inter,system-ui,-apple-system,"Segoe UI",sans-serif;padding-bottom:92px}
+button,input,textarea,select{font:inherit}button{cursor:pointer}
+.app-header{max-width:1060px;margin:auto;padding:15px 16px 0}
+.topbar{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.brand{display:flex;align-items:center;gap:9px;min-width:0}.brand-symbol{width:43px;height:43px;flex:none;filter:drop-shadow(0 0 9px #00b9ff66)}
+.brand-name{font-size:1.32rem;font-weight:900;letter-spacing:-.7px;line-height:1.05;white-space:nowrap}.brand-name span{color:var(--cyan)}.tagline{font-size:.62rem;color:#aebce1;margin-top:4px}
+.premium{border:1px solid #7d61d6;background:linear-gradient(135deg,#21194c,#36246b);color:#ffe18b;border-radius:999px;padding:7px 10px;font-size:.76rem;white-space:nowrap}
+.hero{margin:17px 0 13px;min-height:150px;border:1px solid #344a9a;border-radius:21px;overflow:hidden;position:relative;padding:19px;background:linear-gradient(115deg,#111a4b 0%,#26226e 57%,#111a4b 100%);box-shadow:0 13px 35px #020616}
+.hero:before{content:"";position:absolute;right:-6%;bottom:-55px;width:75%;height:150px;background:linear-gradient(160deg,transparent 25%,#3945a9 26%,#101b50 52%,#070d29 53%);clip-path:polygon(0 100%,15% 46%,27% 72%,45% 15%,59% 60%,73% 30%,100% 100%);opacity:.9}
+.hero:after{content:"";position:absolute;inset:auto -5% -70px -5%;height:95px;border-top:2px solid #4e5eff;border-radius:50%;filter:drop-shadow(0 0 10px #586bff)}
+.hero-content{position:relative;z-index:1}.hello{font-size:1.05rem;font-weight:800;margin:0 0 4px}.hero p{font-size:.83rem;color:#d0d8f7;margin:0}
+.search-wrap{display:flex;align-items:center;gap:10px;border:1px solid #314579;background:#111a38;border-radius:16px;padding:10px 13px;box-shadow:0 7px 20px #02081788}
+.search-wrap span{font-size:1.2rem;color:#a9bdf0}.search-wrap input{border:0;outline:0;background:transparent;color:white;min-width:0;width:100%;font-size:.92rem}.search-wrap input::placeholder{color:#9baacb}
+main{max-width:1060px;margin:0 auto;padding:0 16px}.section-row{display:flex;align-items:center;justify-content:space-between;margin:19px 2px 10px}.section-title{font-size:1rem;font-weight:850;margin:0}.see-all{font-size:.78rem;color:#b9aaff;background:none;border:0;padding:4px}
+.tool-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.tool-tile{position:relative;min-height:112px;padding:13px 5px 11px;border:1px solid #354a9a;border-radius:17px;background:linear-gradient(145deg,#2838b8,#1b246b 76%,#101a43);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;color:white;box-shadow:0 8px 18px #02081799;transition:transform .15s,border-color .15s}
+.tool-tile:nth-child(2){background:linear-gradient(145deg,#9b2a8d,#4a1e77)}.tool-tile:nth-child(3){background:linear-gradient(145deg,#078f99,#07506d)}.tool-tile:nth-child(4){background:linear-gradient(145deg,#c47724,#71341f)}.tool-tile:nth-child(5){background:linear-gradient(145deg,#7437c8,#342078)}.tool-tile:nth-child(6){background:linear-gradient(145deg,#174fc4,#122c73)}
+.tool-tile:active{transform:scale(.97)}.tool-tile:focus-visible{outline:2px solid #70e8ff;outline-offset:2px}
+.tile-icon{width:43px;height:43px;display:grid;place-items:center;border-radius:12px;background:linear-gradient(145deg,#27a9ff,#5644ed);border:1px solid #8ad8ff;box-shadow:0 0 14px #1b91ff77;font-size:1.45rem}
+.tool-tile:nth-child(2) .tile-icon{background:linear-gradient(145deg,#ee62c4,#8b42ee)}.tool-tile:nth-child(3) .tile-icon{background:linear-gradient(145deg,#42e4c5,#0d91ae)}.tool-tile:nth-child(4) .tile-icon{background:linear-gradient(145deg,#ffbd56,#f36d32)}.tool-tile:nth-child(5) .tile-icon{background:linear-gradient(145deg,#b17aff,#7239d7)}.tool-tile:nth-child(6) .tile-icon{background:linear-gradient(145deg,#32b8ff,#3d48eb)}
+.tool-tile strong{font-size:.77rem;line-height:1.2;text-align:center;font-weight:750}.tool-tile .fav{position:absolute;right:6px;top:5px;width:23px;height:23px;border:0;border-radius:50%;background:#08112ccc;color:#fff;padding:0;font-size:.85rem}
+.tool-screen{display:none;margin-top:20px;padding:16px;border:1px solid #31477f;border-radius:20px;background:linear-gradient(150deg,#121d40,#0b1430);box-shadow:0 12px 30px #0006;scroll-margin-top:12px}
+.tool-screen.active{display:block}.screen-head{display:flex;align-items:center;gap:10px;margin-bottom:14px}.back{border:0;background:transparent;color:#dce6ff;font-size:1.5rem;padding:0 4px}.screen-head h2{font-size:1rem;margin:0;flex:1}.screen-head .screen-icon{color:#aebeff}
+.tool-screen p{color:var(--muted);font-size:.84rem}.field{margin:12px 0}.field label{display:block;font-size:.82rem;font-weight:700;margin-bottom:6px;color:#dce6ff}
+input,textarea,select{width:100%;border:1px solid #354a7a;border-radius:11px;background:#09132d;color:#fff;padding:11px 12px;outline:none}input:focus,textarea:focus,select:focus{border-color:#6e77ff;box-shadow:0 0 0 3px #6955ff22}textarea{min-height:100px;resize:vertical}
+.primary{border:1px solid #7d9bff;border-radius:11px;background:linear-gradient(100deg,#5844ed,#087eff);color:white;padding:11px 16px;font-weight:750}.secondary{border:1px solid #435b91;border-radius:11px;background:#1a2850;color:#dce6ff;padding:10px 14px;font-weight:650}
+.result{margin-top:12px;padding:13px;border:1px solid #267a70;border-radius:12px;background:#103d43;color:#d0fff4;overflow-wrap:anywhere}
+.calc-display{min-height:105px;padding:17px 16px;margin-bottom:12px;border:1px solid #2c3c72;border-radius:16px;background:linear-gradient(145deg,#0c1531,#111b3b);display:flex;flex-direction:column;align-items:flex-end;justify-content:center;gap:7px}
+.calc-expression{font-size:1rem;color:#aebbe0;min-height:24px}.calc-value{font-size:2.1rem;font-weight:750;letter-spacing:.4px}
+.calc-keys{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}.calc-keys button{min-height:48px;border:1px solid #273966;border-radius:13px;background:#1b274b;color:white;font-size:1.05rem;font-weight:700}.calc-keys .operator{background:linear-gradient(145deg,#5435c9,#7145f1);border-color:#8068ff}.calc-keys .equals{background:linear-gradient(145deg,#6b3df1,#9343ee)}.calc-keys .zero{grid-column:span 2}
+.list-tool{display:flex;align-items:center;gap:12px;padding:13px 4px;border-bottom:1px solid #27365e}.list-tool:last-child{border:0}.list-tool .list-icon{width:39px;height:39px;border-radius:11px;display:grid;place-items:center;background:#263c89;font-size:1.2rem}.list-tool strong{font-size:.86rem}.list-tool small{display:block;color:#9eafd2;font-size:.72rem}.list-tool .arrow{margin-left:auto;color:#a9b9dc}
+.empty{display:none;padding:20px;text-align:center;color:#aab9dc}.bottom-nav{position:fixed;z-index:30;bottom:8px;left:10px;right:10px;max-width:570px;margin:auto;display:grid;grid-template-columns:repeat(4,1fr);gap:4px;padding:7px;border:1px solid #2d4379;border-radius:21px;background:#080f29f2;box-shadow:0 10px 35px #000b;backdrop-filter:blur(16px)}
+.bottom-nav button{border:0;border-radius:14px;background:transparent;color:#aab8d7;padding:7px 3px;display:flex;flex-direction:column;align-items:center;gap:2px;font-size:.68rem}.bottom-nav button span{font-size:1.15rem}.bottom-nav button.active{background:linear-gradient(135deg,#273b99,#4b34b6);color:#fff}
+footer{text-align:center;color:#7184ad;font-size:.72rem;padding:26px 12px 12px}
+@media(min-width:700px){.app-header{padding-top:22px}.hero{min-height:190px;padding:27px}.hello{font-size:1.35rem}.tool-grid{gap:15px}.tool-tile{min-height:145px}.tile-icon{width:52px;height:52px;font-size:1.7rem}.tool-tile strong{font-size:.92rem}.tool-screen{padding:22px}.bottom-nav{bottom:15px}}
+@media(max-width:380px){.app-header{padding-left:11px;padding-right:11px}.brand-name{font-size:1.15rem}.brand-symbol{width:38px;height:38px}.premium{font-size:.68rem;padding:6px 8px}.tool-grid{gap:7px}.tool-tile{min-height:101px}.tile-icon{width:38px;height:38px}.tool-tile strong{font-size:.7rem}main{padding:0 11px}}
+</style></head>
 <body>
-<header><nav><div class="brand-lockup"><div class="brand-mark" aria-hidden="true"><svg viewBox="0 0 64 64"><path d="M32 3 57 17v30L32 61 7 47V17Z" fill="none" stroke="url(#g)" stroke-width="5"/><g stroke="#36dfff" stroke-width="3" fill="#101b50"><path d="m20 22 12-7 12 7-12 7Z"/><path d="m20 42 12-7 12 7-12 7Z"/><path d="M32 27v8"/><path d="m20 22 12 13 12-13"/></g><circle cx="32" cy="35" r="5" fill="#21d9ff"/><defs><linearGradient id="g" x1="7" y1="3" x2="57" y2="61"><stop stop-color="#a35cff"/><stop offset="1" stop-color="#00e2df"/></linearGradient></defs></svg></div><div class="logo">AllTool<span>Nest</span><small>Simple Tools. Less Hassle.</small></div></div><div class="nav-actions"><a href="#tools">Explore tools ↓</a><button id="themeToggle" type="button" aria-label="Switch color theme">🌙</button></div></nav><section class="hero">
-  <div class="brand-banner" role="img" aria-label="AllToolNest neon blue and purple logo with calculator, photo, video, PDF, web and editing tools">
-    <div class="banner-brand"><div class="banner-mark"><svg viewBox="0 0 100 100" aria-hidden="true"><path d="M50 4 91 27v46L50 96 9 73V27Z" fill="none" stroke="url(#brandGlow)" stroke-width="6"/><g fill="none" stroke="#21dfff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><path d="m28 35 22-13 22 13-22 13Z"/><path d="m28 65 22-13 22 13-22 13Z"/><path d="M50 48v4M28 35l22 17 22-17"/></g><circle cx="50" cy="52" r="7" fill="#1feaff"/><defs><linearGradient id="brandGlow" x1="8" y1="5" x2="92" y2="95"><stop stop-color="#e14cff"/><stop offset=".55" stop-color="#286bff"/><stop offset="1" stop-color="#00f1d2"/></linearGradient></defs></svg></div><div><strong>AllTool<span>Nest</span></strong><small>Simple Tools. Less Hassle.</small></div></div>
-    <div class="banner-hub"><div class="hub-core">✦</div><span class="hub-tool photo">▧</span><span class="hub-tool video">▶</span><span class="hub-tool calc">▦</span><span class="hub-tool edit">Tt</span><span class="hub-tool web">◎</span><span class="hub-tool pdf">PDF</span><span class="hub-tool code">&lt;/&gt;</span></div>
-    <div class="banner-wave"></div>
+<header class="app-header">
+ <div class="topbar"><div class="brand"><svg class="brand-symbol" viewBox="0 0 100 100" aria-hidden="true"><defs><linearGradient id="lg"><stop stop-color="#e34cff"/><stop offset=".52" stop-color="#287aff"/><stop offset="1" stop-color="#00efd4"/></linearGradient></defs><path d="M50 4 91 27v46L50 96 9 73V27Z" fill="none" stroke="url(#lg)" stroke-width="7"/><g fill="none" stroke="#22dfff" stroke-width="4" stroke-linecap="round"><path d="m28 35 22-13 22 13-22 13Z"/><path d="m28 65 22-13 22 13-22 13Z"/><path d="M50 48v4M28 35l22 17 22-17"/></g><circle cx="50" cy="52" r="7" fill="#20eaff"/></svg><div><div class="brand-name">AllTool<span>Nest</span></div><div class="tagline">Simple Tools. Less Hassle.</div></div></div><div class="premium">♛ Premium</div></div>
+ <section class="hero"><div class="hero-content"><div class="hello">Hello, Ganesh</div><p>Your everyday tools, all in one place.</p></div></section>
+ <div class="search-wrap"><span>⌕</span><input id="search" placeholder="Search tools..." aria-label="Search tools"></div>
+</header>
+<main id="home">
+ <div class="section-row"><h2 class="section-title">Popular Tools</h2><button class="see-all" id="seeAll">See all</button></div>
+ <div class="tool-grid" id="toolGrid">
+  <button class="tool-tile" data-id="calc" data-key="calculator quick calculator maths"><span class="tile-icon">▦</span><strong>Calculator</strong></button>
+  <button class="tool-tile" data-id="pdf" data-key="pdf save print document"><span class="tile-icon">▤</span><strong>PDF Tools</strong></button>
+  <button class="tool-tile" data-id="photo" data-key="photo image compressor resize"><span class="tile-icon">▧</span><strong>Photo Tools</strong></button>
+  <button class="tool-tile" data-id="resume" data-key="resume starter cv"><span class="tile-icon">▤</span><strong>Resume Starter</strong></button>
+  <button class="tool-tile" data-id="names" data-key="name generator username"><span class="tile-icon">♙</span><strong>Name Generator</strong></button>
+  <button class="tool-tile" data-id="ai" data-key="ai prompt helper"><span class="tile-icon">✣</span><strong>AI Prompt Helper</strong></button>
+ </div>
+ <div class="empty" id="empty">No matching tools found.</div>
+ <section class="tool-screen" id="calc">
+  <div class="screen-head"><button class="back" data-back>‹</button><h2>Calculator</h2><span class="screen-icon">◷</span></div>
+  <div class="calc-display"><div class="calc-expression" id="calcExpr">Ready</div><div class="calc-value" id="calcValue">0</div></div>
+  <div class="calc-keys">
+   <button data-keycalc="AC">AC</button><button data-keycalc="±">+/-</button><button data-keycalc="%">%</button><button class="operator" data-keycalc="÷">÷</button>
+   <button data-keycalc="7">7</button><button data-keycalc="8">8</button><button data-keycalc="9">9</button><button class="operator" data-keycalc="×">×</button>
+   <button data-keycalc="4">4</button><button data-keycalc="5">5</button><button data-keycalc="6">6</button><button class="operator" data-keycalc="−">−</button>
+   <button data-keycalc="1">1</button><button data-keycalc="2">2</button><button data-keycalc="3">3</button><button class="operator" data-keycalc="+">+</button>
+   <button class="zero" data-keycalc="0">0</button><button data-keycalc=".">.</button><button class="equals" data-keycalc="=">=</button>
   </div>
-  <div class="greeting-card"><div class="avatar">G</div><div><strong>Hello, Ganesh</strong><p>Your everyday tools, all in one place.</p></div><span class="greeting-spark">✦</span></div>
-</section></header>
-<main id="tools">
-<h2 class="section-heading">Find the right tool</h2><div class="search"><span>⌕</span><input id="search" placeholder="Search tools (e.g. calculator, photo, resume)…" aria-label="Search tools"></div><p class="search-status" id="searchStatus" aria-live="polite">6 useful tools ready to use — no sign-up needed.</p><div class="empty-state" id="emptyState">No tools found. Try “calculator”, “photo” or “resume”.</div>
-<div class="section-row"><h2 class="section-heading">Popular Tools</h2><span class="section-note">See all</span></div><div class="grid" id="cards">
-<article class="card" data-tool="calc" data-key="calculator maths percentage" tabindex="0" role="button" aria-label="Open Quick Calculator"><div class="icon">🧮</div><h2>Quick Calculator</h2><p>Work out everyday sums and percentages.</p><button onclick="openTool('calc')">Open calculator</button></article>
-<article class="card" data-tool="names" data-key="name generator instagram username" tabindex="0" role="button" aria-label="Open Name Generator"><div class="icon">✨</div><h2>Name Generator</h2><p>Generate modern username ideas from a name or word.</p><button onclick="openTool('names')">Generate names</button></article>
-<article class="card" data-tool="photo" data-key="photo image compressor resize" tabindex="0" role="button" aria-label="Open Photo Compressor"><div class="icon">🖼️</div><h2>Photo Compressor</h2><p>Compress an image in your browser and save the result.</p><button onclick="openTool('photo')">Compress photo</button></article>
-<article class="card" data-tool="pdf" data-key="pdf print save document" tabindex="0" role="button" aria-label="Open Save as PDF"><div class="icon">📄</div><h2>Save as PDF</h2><p>Turn text into a clean page you can print or save as PDF.</p><button onclick="openTool('pdf')">Create PDF page</button></article>
-<article class="card" data-tool="resume" data-key="resume cv job work experience" tabindex="0" role="button" aria-label="Open Resume Starter"><div class="icon">📝</div><h2>Resume Starter</h2><p>Draft a simple resume and print it or save as PDF.</p><button onclick="openTool('resume')">Build resume</button></article>
-<article class="card" data-tool="ai" data-key="ai prompts writing ideas artificial intelligence" tabindex="0" role="button" aria-label="Open AI Prompt Helper"><div class="icon">🤖</div><h2>AI Prompt Helper</h2><p>Create a prompt for writing, ideas or a social post.</p><button onclick="openTool('ai')">Make a prompt</button></article>
-</div>
-<section class="tool card" id="calc"><h2>🧮 Quick Calculator</h2><p class="muted">Enter two numbers to calculate a result.</p><div class="row"><div class="field"><label>First number</label><input id="n1" type="number" value="100"></div><div class="field"><label>Operation</label><select id="op"><option value="+">Add (+)</option><option value="-">Subtract (−)</option><option value="*">Multiply (×)</option><option value="/">Divide (÷)</option><option value="%">First number % of second</option></select></div><div class="field"><label>Second number</label><input id="n2" type="number" value="20"></div></div><button onclick="calculate()">Calculate</button><div id="calcResult" class="result">Result: 120</div></section>
-<section class="tool card" id="names"><h2>✨ Name Generator</h2><div class="field"><label>Your name or keyword</label><input id="baseName" value="Ganesh" placeholder="Type a name or keyword"></div><button onclick="makeNames()">Generate ideas</button><div id="nameResult" class="result">GaniNova · UrbanGani · GaniSpark · HeyGani</div><p class="muted">Check availability and trademarks before using a name for a business or domain.</p></section>
-<section class="tool card" id="photo"><h2>🖼️ Photo Compressor</h2><p class="muted">Choose an image. It is processed in this browser and not uploaded by this demo.</p><div class="field"><label>Choose image</label><input id="photoFile" type="file" accept="image/*"></div><div class="field"><label>Output quality</label><input id="quality" type="range" min="30" max="95" value="75"><span id="qualityLabel">75%</span></div><button onclick="compressPhoto()">Compress image</button><div id="photoResult"></div></section>
-<section class="tool card" id="pdf"><h2>📄 Save text as PDF</h2><p class="muted">Enter text, then use your browser's print dialog and choose “Save as PDF”.</p><div class="field"><label>Document title</label><input id="pdfTitle" value="My Document"></div><div class="field"><label>Text</label><textarea id="pdfText" placeholder="Type your document here…"></textarea></div><button onclick="printText()">Print / Save as PDF</button></section>
-<section class="tool card" id="resume"><h2>📝 Resume Starter</h2><div class="field"><label>Full name</label><input id="rName" placeholder="Your full name"></div><div class="field"><label>Contact details</label><input id="rContact" placeholder="Phone · Email · City"></div><div class="field"><label>Career objective</label><textarea id="rObjective" placeholder="A short introduction about your goals"></textarea></div><div class="field"><label>Skills</label><input id="rSkills" placeholder="Communication, MS Office…"></div><div class="field"><label>Work experience</label><textarea id="rExperience" placeholder="Role, company, dates and responsibilities"></textarea></div><div class="field"><label>Education</label><textarea id="rEducation" placeholder="Qualification, institution, year"></textarea></div><button onclick="buildResume()">Preview resume</button> <button class="secondary" onclick="printResume()">Print / Save as PDF</button><div id="resumeResult"></div></section>
-<section class="tool card" id="ai"><h2>🤖 AI Prompt Helper</h2><p class="muted">This creates a prompt you can copy into an AI assistant. It does not call an AI service by itself.</p><div class="field"><label>What do you need help with?</label><input id="aiTopic" placeholder="e.g. Instagram caption for a clothing shop"></div><div class="field"><label>Tone</label><select id="aiTone"><option>Clear and friendly</option><option>Professional</option><option>Creative and stylish</option><option>Short and simple</option></select></div><button onclick="makePrompt()">Create prompt</button><div id="promptResult" class="result" style="display:none"></div><button class="secondary" id="copyPrompt" onclick="copyPrompt()" style="display:none;margin-top:10px">Copy prompt</button></section>
+ </section>
+ <section class="tool-screen" id="pdf"><div class="screen-head"><button class="back" data-back>‹</button><h2>PDF Tools</h2><span class="screen-icon">♛</span></div><div class="result">Work with PDFs easily<br><small>Create, print and save your documents</small></div><div class="list-tool"><span class="list-icon">▤</span><div><strong>Save as PDF</strong><small>Convert text or a page to PDF</small></div><span class="arrow">›</span></div><div class="field"><label>Document title</label><input id="pdfTitle" value="My Document"></div><div class="field"><label>Your text</label><textarea id="pdfText" placeholder="Type your document here..."></textarea></div><button class="primary" id="makePdf">Save as PDF</button></section>
+ <section class="tool-screen" id="photo"><div class="screen-head"><button class="back" data-back>‹</button><h2>Photo Tools</h2></div><div class="list-tool"><span class="list-icon">▧</span><div><strong>Photo Compressor</strong><small>Reduce image file size</small></div></div><div class="field"><label>Choose photo</label><input id="photoFile" type="file" accept="image/*"></div><div class="field"><label>Image quality</label><input id="quality" type="range" min="30" max="95" value="75"><small id="qualityLabel">75%</small></div><button class="primary" id="compress">Compress Photo</button><div id="photoResult"></div></section>
+ <section class="tool-screen" id="resume"><div class="screen-head"><button class="back" data-back>‹</button><h2>Resume Starter</h2></div><div class="field"><label>Full name</label><input id="rName" placeholder="Your name"></div><div class="field"><label>Contact details</label><input id="rContact" placeholder="Phone · Email · City"></div><div class="field"><label>Career objective</label><textarea id="rObjective"></textarea></div><div class="field"><label>Skills</label><input id="rSkills"></div><div class="field"><label>Work experience</label><textarea id="rExperience"></textarea></div><div class="field"><label>Education</label><textarea id="rEducation"></textarea></div><button class="primary" id="previewResume">Preview Resume</button> <button class="secondary" id="printResume">Save / Print PDF</button><div id="resumeResult"></div></section>
+ <section class="tool-screen" id="names"><div class="screen-head"><button class="back" data-back>‹</button><h2>Name Generator</h2></div><div class="field"><label>Name or keyword</label><input id="baseName" placeholder="Enter a name"></div><button class="primary" id="generateNames">Generate Names</button><div id="nameResult" class="result">Your name ideas will appear here.</div></section>
+ <section class="tool-screen" id="ai"><div class="screen-head"><button class="back" data-back>‹</button><h2>AI Prompt Helper</h2></div><div class="field"><label>What do you need help with?</label><input id="aiTopic" placeholder="e.g. Instagram caption"></div><div class="field"><label>Tone</label><select id="aiTone"><option>Clear and friendly</option><option>Professional</option><option>Creative and stylish</option><option>Short and simple</option></select></div><button class="primary" id="makePrompt">Create Prompt</button><div id="promptResult" class="result"></div><button class="secondary" id="copyPrompt">Copy Prompt</button></section>
 </main>
-<div class="bottom-nav" role="navigation" aria-label="Main navigation">
-<button class="active" data-tab="home"><span>⌂</span>Home</button>
-<button data-tab="tools"><span>▦</span>Tools</button>
-<button data-tab="favorites"><span>♡</span>Favorites</button>
-<button data-tab="more"><span>•••</span>More</button>
-</div>
-<footer id="more">© <span id="year"></span> AllToolNest · Everyday Tools in One App.</footer>
+<nav class="bottom-nav" aria-label="Main navigation"><button class="active" data-tab="home"><span>⌂</span>Home</button><button data-tab="tools"><span>▦</span>Tools</button><button data-tab="favorites"><span>♡</span>Favorites</button><button data-tab="more"><span>•••</span>More</button></nav>
+<footer id="more">© <span id="year"></span> AllToolNest · Simple Tools. Less Hassle.</footer>
 <script>
-const toolIds=['calc','names','photo','pdf','resume','ai'];
-// Save favorite tools on this device.
-document.querySelectorAll('#cards .card').forEach(card=>{
- card.addEventListener('click',e=>{if(e.target.closest('.fav-toggle'))return;openTool(card.dataset.tool)});card.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();openTool(card.dataset.tool)}});
- const key='alltoolnest-fav-'+card.dataset.key.split(' ')[0];
- const btn=document.createElement('button');btn.className='fav-toggle';btn.type='button';btn.setAttribute('aria-label','Toggle favorite');btn.textContent=localStorage.getItem(key)==='1'?'★':'☆';
- card.dataset.favorite=localStorage.getItem(key)==='1'?'1':'0';
- btn.addEventListener('click',e=>{e.stopPropagation();const on=card.dataset.favorite!=='1';card.dataset.favorite=on?'1':'0';localStorage.setItem(key,on?'1':'0');btn.textContent=on?'★':'☆';});
- card.appendChild(btn);
-});
-document.querySelectorAll('.bottom-nav button').forEach(btn=>btn.addEventListener('click',()=>{
- document.querySelectorAll('.bottom-nav button').forEach(b=>b.classList.toggle('active',b===btn));
- const tab=btn.dataset.tab;
- document.querySelectorAll('#cards .card').forEach(c=>c.style.display=(tab==='favorites'?(c.dataset.favorite==='1'?'':'none'):''));
- if(tab==='home')window.scrollTo({top:0,behavior:'smooth'});
- if(tab==='tools'||tab==='favorites')document.getElementById('tools').scrollIntoView({behavior:'smooth'});
- if(tab==='more')document.getElementById('more').scrollIntoView({behavior:'smooth'});
-}));
-
-function openTool(id){toolIds.forEach(x=>document.getElementById(x).classList.toggle('active',x===id));document.getElementById(id).scrollIntoView({behavior:'smooth',block:'start'})}
-document.getElementById('search').addEventListener('input',e=>{let q=e.target.value.toLowerCase().trim(),shown=0;document.querySelectorAll('#cards .card').forEach(c=>{let match=c.dataset.key.includes(q)||c.innerText.toLowerCase().includes(q);c.style.display=match?'':'none';if(match)shown++});document.getElementById('emptyState').style.display=shown?'none':'block';document.getElementById('searchStatus').textContent=q?(shown+' tool'+(shown===1?'':'s')+' found'):'6 free tools ready to use — no sign-up needed.'});
-document.getElementById('themeToggle').addEventListener('click',()=>{let dark=document.body.classList.toggle('dark');document.getElementById('themeToggle').textContent=dark?'☀️':'🌙';document.getElementById('themeToggle').setAttribute('aria-label',dark?'Switch to light theme':'Switch to dark theme');try{localStorage.setItem('alltoolnest-theme',dark?'dark':'light')}catch(e){}});try{if(localStorage.getItem('alltoolnest-theme')==='dark'){document.body.classList.add('dark');document.getElementById('themeToggle').textContent='☀️';document.getElementById('themeToggle').setAttribute('aria-label','Switch to light theme')}}catch(e){}
-function calculate(){let a=Number(document.getElementById('n1').value),b=Number(document.getElementById('n2').value),o=document.getElementById('op').value,r;if(o==='/'&&b===0){document.getElementById('calcResult').textContent='Cannot divide by zero.';return}if(o==='+')r=a+b;else if(o==='-')r=a-b;else if(o==='*')r=a*b;else if(o==='/')r=a/b;else r=b===0?'Cannot calculate percentage when second number is zero.':a/100*b;document.getElementById('calcResult').textContent='Result: '+r}
-function makeNames(){let b=(document.getElementById('baseName').value.trim()||'User').replace(/[^a-zA-Z0-9]/g,'');let ideas=[b+'Nova','Its'+b,b+'Spark','Real'+b,b+'Verse','The'+b+'Hub','Hey'+b,b+'Nest',b+'Wave',b+'Ace'];document.getElementById('nameResult').textContent=ideas.join(' · ')}
-document.getElementById('quality').addEventListener('input',e=>document.getElementById('qualityLabel').textContent=e.target.value+'%');
-function compressPhoto(){let f=document.getElementById('photoFile').files[0],out=document.getElementById('photoResult');if(!f){out.textContent='Please choose an image first.';return}let url=URL.createObjectURL(f),img=new Image();img.onload=()=>{let c=document.createElement('canvas'),max=2400,scale=Math.min(1,max/Math.max(img.width,img.height));c.width=Math.round(img.width*scale);c.height=Math.round(img.height*scale);c.getContext('2d').drawImage(img,0,0,c.width,c.height);c.toBlob(blob=>{let link=URL.createObjectURL(blob);out.innerHTML='<p>Original: '+(f.size/1024).toFixed(1)+' KB · Compressed: '+(blob.size/1024).toFixed(1)+' KB</p><a class="btn" download="toolnest-compressed.jpg" href="'+link+'">Download compressed image</a>';URL.revokeObjectURL(url)},'image/jpeg',Number(document.getElementById('quality').value)/100)};img.onerror=()=>out.textContent='Could not read this image.';img.src=url}
-function printText(){let title=document.getElementById('pdfTitle').value||'My Document',txt=document.getElementById('pdfText').value;printWindow('<h1>'+escapeHtml(title)+'</h1><div>'+escapeHtml(txt).replace(/\n/g,'<br>')+'</div>')}
-function escapeHtml(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
-function printWindow(content){let w=window.open('','_blank');if(!w){alert('Allow pop-ups for this page, then try again.');return}w.document.write('<!doctype html><html><head><title>AllToolNest document</title><meta charset="utf-8"><style>body{font:16px/1.6 Arial,sans-serif;max-width:800px;margin:40px auto;padding:0 24px;color:#222}h1{border-bottom:2px solid #555;padding-bottom:10px}@media print{body{margin:15mm auto}}</style></head><body>'+content+'</body></html>');w.document.close();w.focus();setTimeout(()=>w.print(),300)}
-function buildResume(){let name=document.getElementById('rName').value||'Your Name',contact=document.getElementById('rContact').value,obj=document.getElementById('rObjective').value,skills=document.getElementById('rSkills').value,exp=document.getElementById('rExperience').value,edu=document.getElementById('rEducation').value;let h='<div id="resumePreview"><h1>'+escapeHtml(name)+'</h1><p>'+escapeHtml(contact)+'</p>';[['CAREER OBJECTIVE',obj],['SKILLS',skills],['WORK EXPERIENCE',exp],['EDUCATION',edu]].forEach(([t,v])=>{if(v)h+='<h2>'+t+'</h2><p>'+escapeHtml(v).replace(/\n/g,'<br>')+'</p>'});h+='</div>';document.getElementById('resumeResult').innerHTML='<div class="result">'+h+'</div>'}
-function printResume(){buildResume();let el=document.getElementById('resumePreview');if(!el.innerText.trim()){alert('Please enter your resume details first.');return}printWindow(el.innerHTML)}
-function makePrompt(){let topic=document.getElementById('aiTopic').value.trim();if(!topic){alert('Please enter what you need help with.');return}document.getElementById('promptResult').style.display='block';document.getElementById('promptResult').textContent='Help me with: '+topic+'. Use a '+document.getElementById('aiTone').value.toLowerCase()+' tone. Give a useful, accurate answer with clear steps and examples where appropriate.';document.getElementById('copyPrompt').style.display='inline-flex'}
-function copyPrompt(){navigator.clipboard.writeText(document.getElementById('promptResult').textContent).then(()=>document.getElementById('copyPrompt').textContent='Copied!').catch(()=>alert('Select and copy the prompt text manually.'))}
-document.getElementById('year').textContent=new Date().getFullYear();
-if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}));}
-</script>
-</body></html>
+const ids=['calc','pdf','photo','resume','names','ai'];let calcCurrent='0',calcPrev=null,calcOp=null,calcFresh=false;
+const $=id=>document.getElementById(id);
+function showTool(id){ids.forEach(x=>$(x).classList.toggle('active',x===id));$('home').scrollIntoView({behavior:'smooth',block:'start'});setTimeout(()=>$(id).scrollIntoView({behavior:'smooth',block:'nearest'}),80)}
+function goHome(){ids.forEach(x=>$(x).classList.remove('active'));window.scrollTo({top:0,behavior:'smooth'})}
+document.querySelectorAll('.tool-tile').forEach(b=>b.addEventListener('click',()=>showTool(b.dataset.id)));
+document.querySelectorAll('[data-back]').forEach(b=>b.addEventListener('click',goHome));
+$('seeAll').addEventListener('click',()=>{$('search').focus();$('toolGrid').scrollIntoView({behavior:'smooth',block:'center'})});
+$('search').addEventListener('input',e=>{const q=e.target.value.toLowerCase().trim();let n=0;document.querySelectorAll('.tool-tile').forEach(b=>{const ok=(b.dataset.key+' '+b.innerText).toLowerCase().includes(q);b.style.display=ok?'':'none';if(ok)n++});$('empty').style.display=n?'none':'block'});
+document.querySelectorAll('.bottom-nav button').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('.bottom-nav button').forEach(x=>x.classList.toggle('active',x===b));if(b.dataset.tab==='home')goHome();else if(b.dataset.tab==='tools'){$('search').focus();$('home').scrollIntoView({behavior:'smooth'})}else if(b.dataset.tab==='favorites'){alert('Tap the star on a tool to add it to Favorites.')}else $('more').scrollIntoView({behavior:'smooth'})}));
+function showCalc(){ $('calcValue').textContent=calcCurrent;$('calcExpr').textContent=calcOp&&calcPrev!==null?calcPrev+' '+calcOp:'Ready';}
+document.querySelectorAll('[data-keycalc]').forEach(b=>b.addEventListener('click',()=>{let k=b.dataset.keycalc;if(k==='AC'){calcCurrent='0';calcPrev=null;calcOp=null;calcFresh=false}else if(k==='±'){calcCurrent=String(-Number(calcCurrent))}else if(k==='%'){calcCurrent=String(Number(calcCurrent)/100)}else if(['+','−','×','÷'].includes(k)){calcPrev=Number(calcCurrent);calcOp=k;calcFresh=true}else if(k==='='){if(calcOp&&calcPrev!==null){let a=calcPrev,c=Number(calcCurrent);let r=calcOp==='+'?a+c:calcOp==='−'?a-c:calcOp==='×'?a*c:c===0?'Error':a/c;calcCurrent=String(r);calcPrev=null;calcOp=null;calcFresh=true}}else if(k==='.'){if(calcFresh){calcCurrent='0.';calcFresh=false}else if(!calcCurrent.includes('.'))calcCurrent+='.'}else{if(calcFresh||calcCurrent==='0'){calcCurrent=k;calcFresh=false}else if(calcCurrent.length<14)calcCurrent+=k}showCalc()}));
+$('makePdf').addEventListener('click',()=>{const title=$('pdfTitle').value||'My Document',txt=$('pdfText').value;printWindow('<h1>'+esc(title)+'</h1><div>'+esc(txt).replace(/\n/g,'<br>')+'</div>')});
+function esc(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function printWindow(content){let w=window.open('','_blank');if(!w){alert('Please allow pop-ups and try again.');return}w.document.write('<!doctype html><html><head><meta charset="utf-8"><title>AllToolNest PDF</title><style>body{font:16px/1.6 Arial;max-width:800px;margin:40px auto;padding:0 24px;color:#222}h1{border-bottom:2px solid #555;padding-bottom:10px}</style></head><body>'+content+'</body></html>');w.document.close();w.focus();setTimeout(()=>w.print(),300)}
+$('quality').addEventListener('input',e=>$('qualityLabel').textContent=e.target.value+'%');
+$('compress').addEventListener('click',()=>{let f=$('photoFile').files[0];if(!f){$('photoResult').textContent='Choose a photo first.';return}let url=URL.createObjectURL(f),img=new Image();img.onload=()=>{let c=document.createElement('canvas'),scale=Math.min(1,2400/Math.max(img.width,img.height));c.width=Math.round(img.width*scale);c.height=Math.round(img.height*scale);c.getContext('2d').drawImage(img,0,0,c.width,c.height);c.toBlob(blob=>{let link=URL.createObjectURL(blob);$('photoResult').innerHTML='<div class="result">Original '+(f.size/1024).toFixed(1)+' KB · New '+(blob.size/1024).toFixed(1)+' KB<br><a class="primary" download="alltoolnest-photo.jpg" href="'+link+'">Download Photo</a></div>';URL.revokeObjectURL(url)},'image/jpeg',Number($('quality').value)/100)};img.src=url});
+$('generateNames').addEventListener('click',()=>{let b=($('baseName').value.trim()||'User').replace(/[^a-z0-9]/gi,'');$('nameResult').textContent=[b+'Nova','Its'+b,b+'Spark','Real'+b,b+'Verse','The'+b+'Hub','Hey'+b,b+'Nest'].join(' · ')});
+$('previewResume').addEventListener('click',()=>{let h='<h1>' +esc($('rName').value||'Your Name')+'</h1><p>'+esc($('rContact').value)+'</p>';[['CAREER OBJECTIVE',$('rObjective').value],['SKILLS',$('rSkills').value],['WORK EXPERIENCE',$('rExperience').value],['EDUCATION',$('rEducation').value]].forEach(([t,v])=>{if(v)h+='<h3>'+t+'</h3><p>'+esc(v).replace(/\n/g,'<br>')+'</p>'});$('resumeResult').innerHTML='<div class="result">'+h+'</div>'});
+$('printResume').addEventListener('click',()=>{if(!$('rName').value&&!$('rObjective').value&&!$('rExperience').value){alert('Enter your resume details first.');return}$('previewResume').click();printWindow($('resumeResult').innerHTML)});
+$('makePrompt').addEventListener('click',()=>{let t=$('aiTopic').value.trim();if(!t){alert('Enter a topic first.');return}$('promptResult').textContent='Help me with: '+t+'. Use a '+$('aiTone').value.toLowerCase()+' tone. Give a useful, accurate answer with clear steps and examples.'});
+$('copyPrompt').addEventListener('click',()=>{if(!$('promptResult').textContent){alert('Create a prompt first.');return}navigator.clipboard.writeText($('promptResult').textContent).then(()=>alert('Prompt copied.')).catch(()=>alert('Select and copy the prompt text.'))});
+$('year').textContent=new Date().getFullYear();
+if('serviceWorker' in navigator)window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}));
+</script></body></html>
