@@ -20,13 +20,12 @@ button,input,textarea,select{font:inherit}button{cursor:pointer}
 .search-wrap{display:flex;align-items:center;gap:10px;border:1px solid #314579;background:#111a38;border-radius:16px;padding:10px 13px;box-shadow:0 7px 20px #02081788}
 .search-wrap span{font-size:1.2rem;color:#a9bdf0}.search-wrap input{border:0;outline:0;background:transparent;color:white;min-width:0;width:100%;font-size:.92rem}.search-wrap input::placeholder{color:#9baacb}
 main{max-width:1060px;margin:0 auto;padding:0 16px}.section-row{display:flex;align-items:center;justify-content:space-between;margin:19px 2px 10px}.section-title{font-size:1rem;font-weight:850;margin:0}.see-all{font-size:.78rem;color:#b9aaff;background:none;border:0;padding:4px}
-.tool-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
-.tool-tile{position:relative;min-height:112px;padding:13px 5px 11px;border:1px solid #354a9a;border-radius:17px;background:linear-gradient(145deg,#2838b8,#1b246b 76%,#101a43);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;color:white;box-shadow:0 8px 18px #02081799;transition:transform .15s,border-color .15s}
-.tool-tile:nth-child(2){background:linear-gradient(145deg,#9b2a8d,#4a1e77)}.tool-tile:nth-child(3){background:linear-gradient(145deg,#078f99,#07506d)}.tool-tile:nth-child(4){background:linear-gradient(145deg,#c47724,#71341f)}.tool-tile:nth-child(5){background:linear-gradient(145deg,#7437c8,#342078)}.tool-tile:nth-child(6){background:linear-gradient(145deg,#174fc4,#122c73)}
-.tool-tile:active{transform:scale(.97)}.tool-tile:focus-visible{outline:2px solid #70e8ff;outline-offset:2px}
-.tile-icon{width:43px;height:43px;display:grid;place-items:center;border-radius:12px;background:linear-gradient(145deg,#27a9ff,#5644ed);border:1px solid #8ad8ff;box-shadow:0 0 14px #1b91ff77;font-size:1.45rem}
-.tool-tile:nth-child(2) .tile-icon{background:linear-gradient(145deg,#ee62c4,#8b42ee)}.tool-tile:nth-child(3) .tile-icon{background:linear-gradient(145deg,#42e4c5,#0d91ae)}.tool-tile:nth-child(4) .tile-icon{background:linear-gradient(145deg,#ffbd56,#f36d32)}.tool-tile:nth-child(5) .tile-icon{background:linear-gradient(145deg,#b17aff,#7239d7)}.tool-tile:nth-child(6) .tile-icon{background:linear-gradient(145deg,#32b8ff,#3d48eb)}
-.tool-tile strong{font-size:.77rem;line-height:1.2;text-align:center;font-weight:750}.tool-tile .fav{position:absolute;right:6px;top:5px;width:23px;height:23px;border:0;border-radius:50%;background:#08112ccc;color:#fff;padding:0;font-size:.85rem}
+.tool-grid{display:flex;flex-direction:column;gap:8px}
+.tool-tile{position:relative;width:100%;min-height:66px;padding:10px 13px;border:1px solid #263b69;border-radius:15px;background:linear-gradient(100deg,#121d3b,#0c1630);display:flex;flex-direction:row;align-items:center;justify-content:flex-start;gap:12px;color:white;text-align:left;box-shadow:0 5px 13px #02081766;transition:transform .15s,border-color .15s}
+.tool-tile:active{transform:scale(.985);border-color:#20cfff}.tool-tile:focus-visible{outline:2px solid #70e8ff;outline-offset:2px}
+.tile-icon{width:40px;height:40px;flex:none;display:grid;place-items:center;border-radius:11px;background:linear-gradient(145deg,#247dff,#5140d5);border:1px solid #5eabff;font-size:1.2rem}
+.tool-tile:nth-child(2) .tile-icon{background:linear-gradient(145deg,#c83b85,#7336c8)}.tool-tile:nth-child(3) .tile-icon{background:linear-gradient(145deg,#12a9a6,#1767a8)}.tool-tile:nth-child(4) .tile-icon{background:linear-gradient(145deg,#d78b2c,#b64d37)}.tool-tile:nth-child(5) .tile-icon{background:linear-gradient(145deg,#8c55e9,#4735a8)}.tool-tile:nth-child(6) .tile-icon{background:linear-gradient(145deg,#258dd8,#3d48c7)}
+.tool-tile strong{font-size:.86rem;line-height:1.2;text-align:left;font-weight:800;display:block}.tool-tile small{display:block;color:#9eafd2;font-size:.72rem;margin-top:3px}.tool-tile .row-arrow{margin-left:auto;color:#9eb8e8;font-size:1.35rem;padding-left:8px}
 .tool-screen{display:none;margin-top:20px;padding:16px;border:1px solid #31477f;border-radius:20px;background:linear-gradient(150deg,#121d40,#0b1430);box-shadow:0 12px 30px #0006;scroll-margin-top:12px}
 .tool-screen.active{display:block}.screen-head{display:flex;align-items:center;gap:10px;margin-bottom:14px}.back{border:0;background:transparent;color:#dce6ff;font-size:1.5rem;padding:0 4px}.screen-head h2{font-size:1rem;margin:0;flex:1}.screen-head .screen-icon{color:#aebeff}
 .tool-screen p{color:var(--muted);font-size:.84rem}.field{margin:12px 0}.field label{display:block;font-size:.82rem;font-weight:700;margin-bottom:6px;color:#dce6ff}
@@ -40,8 +39,8 @@ input,textarea,select{width:100%;border:1px solid #354a7a;border-radius:11px;bac
 .empty{display:none;padding:20px;text-align:center;color:#aab9dc}.bottom-nav{position:fixed;z-index:30;bottom:8px;left:10px;right:10px;max-width:570px;margin:auto;display:grid;grid-template-columns:repeat(4,1fr);gap:4px;padding:7px;border:1px solid #2d4379;border-radius:21px;background:#080f29f2;box-shadow:0 10px 35px #000b;backdrop-filter:blur(16px)}
 .bottom-nav button{border:0;border-radius:14px;background:transparent;color:#aab8d7;padding:7px 3px;display:flex;flex-direction:column;align-items:center;gap:2px;font-size:.68rem}.bottom-nav button span{font-size:1.15rem}.bottom-nav button.active{background:linear-gradient(135deg,#273b99,#4b34b6);color:#fff}
 footer{text-align:center;color:#7184ad;font-size:.72rem;padding:26px 12px 12px}
-@media(min-width:700px){.app-header{padding-top:22px}.hero{min-height:190px;padding:24px}.banner-brand img{width:58px;height:58px}.banner-brand strong{font-size:1.7rem}.banner-tools span{height:43px}.hello-strip strong{font-size:1.2rem}.tool-grid{gap:15px}.tool-tile{min-height:145px}.tile-icon{width:52px;height:52px;font-size:1.7rem}.tool-tile strong{font-size:.92rem}.tool-screen{padding:22px}.bottom-nav{bottom:15px}}
-@media(max-width:380px){.app-header{padding-left:11px;padding-right:11px}.brand-name{font-size:1.15rem}.brand-symbol{width:38px;height:38px}.premium{font-size:.68rem;padding:6px 8px}.tool-grid{gap:7px}.tool-tile{min-height:101px}.tile-icon{width:38px;height:38px}.tool-tile strong{font-size:.7rem}main{padding:0 11px}}
+@media(min-width:700px){.app-header{padding-top:22px}.hero{min-height:190px;padding:24px}.banner-brand img{width:58px;height:58px}.banner-brand strong{font-size:1.7rem}.banner-tools span{height:43px}.hello-strip strong{font-size:1.2rem}.tool-grid{gap:10px}.tool-tile{min-height:72px}.tile-icon{width:44px;height:44px;font-size:1.35rem}.tool-tile strong{font-size:.95rem}.tool-screen{padding:22px}.bottom-nav{bottom:15px}}
+@media(max-width:380px){.app-header{padding-left:11px;padding-right:11px}.brand-name{font-size:1.15rem}.brand-symbol{width:38px;height:38px}.premium{font-size:.68rem;padding:6px 8px}.tool-grid{gap:7px}.tool-tile{min-height:62px;padding:9px}.tile-icon{width:37px;height:37px}.tool-tile strong{font-size:.82rem}main{padding:0 11px}}
 </style></head>
 <body>
 <header class="app-header">
@@ -52,12 +51,12 @@ footer{text-align:center;color:#7184ad;font-size:.72rem;padding:26px 12px 12px}
 <main id="home">
  <div class="section-row"><h2 class="section-title">Popular Tools</h2><button class="see-all" id="seeAll">See all</button></div>
  <div class="tool-grid" id="toolGrid">
-  <button class="tool-tile" data-id="calc" data-key="calculator quick calculator maths"><span class="tile-icon">▦</span><strong>Calculator</strong></button>
-  <button class="tool-tile" data-id="pdf" data-key="pdf save print document"><span class="tile-icon">▤</span><strong>PDF Tools</strong></button>
-  <button class="tool-tile" data-id="photo" data-key="photo image compressor resize"><span class="tile-icon">▧</span><strong>Photo Tools</strong></button>
-  <button class="tool-tile" data-id="resume" data-key="resume starter cv"><span class="tile-icon">▤</span><strong>Resume Starter</strong></button>
-  <button class="tool-tile" data-id="names" data-key="name generator username"><span class="tile-icon">♙</span><strong>Name Generator</strong></button>
-  <button class="tool-tile" data-id="ai" data-key="ai prompt helper"><span class="tile-icon">✣</span><strong>AI Prompt Helper</strong></button>
+  <button class="tool-tile" data-id="calc" data-key="calculator quick calculator maths"><span class="tile-icon">▦</span><span><strong>Calculator</strong><small>Basic &amp; scientific calculator</small></span><span class="row-arrow">›</span></button>
+  <button class="tool-tile" data-id="pdf" data-key="pdf save print document"><span class="tile-icon">▤</span><span><strong>PDF Tools</strong><small>Create, save and manage PDFs</small></span><span class="row-arrow">›</span></button>
+  <button class="tool-tile" data-id="photo" data-key="photo image compressor resize"><span class="tile-icon">▧</span><span><strong>Photo Tools</strong><small>Compress and resize images</small></span><span class="row-arrow">›</span></button>
+  <button class="tool-tile" data-id="resume" data-key="resume starter cv"><span class="tile-icon">▤</span><span><strong>Resume Starter</strong><small>Build a simple resume</small></span><span class="row-arrow">›</span></button>
+  <button class="tool-tile" data-id="names" data-key="name generator username"><span class="tile-icon">♙</span><span><strong>Name Generator</strong><small>Find creative name ideas</small></span><span class="row-arrow">›</span></button>
+  <button class="tool-tile" data-id="ai" data-key="ai prompt helper"><span class="tile-icon">✣</span><span><strong>AI Prompt Helper</strong><small>Create better AI prompts</small></span><span class="row-arrow">›</span></button>
  </div>
  <div class="empty" id="empty">No matching tools found.</div>
  <section class="tool-screen" id="calc">
