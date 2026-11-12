@@ -1,0 +1,19 @@
+{
+  "name": "AllToolNest",
+  "short_name": "AllToolNest",
+  "description": "Everyday tools in one app",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#070d25",
+  "theme_color": "#070d25",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "./icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
