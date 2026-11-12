@@ -1,12 +1,12 @@
 {
-  "name": "AllToolNest",
+  "name": "AllToolNest — Simple Tools. Less Hassle.",
   "short_name": "AllToolNest",
   "description": "Everyday tools in one app",
-  "start_url": "./",
+  "start_url": "./?source=pwa",
   "scope": "./",
   "display": "standalone",
-  "background_color": "#070d25",
-  "theme_color": "#070d25",
+  "background_color": "#070b20",
+  "theme_color": "#070b20",
   "orientation": "portrait",
   "icons": [
     {
