@@ -1,7 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-<defs><linearGradient id="g" x1="40" y1="30" x2="470" y2="480"><stop stop-color="#e54cff"/><stop offset=".48" stop-color="#2876ff"/><stop offset="1" stop-color="#00ead5"/></linearGradient><radialGradient id="bg"><stop stop-color="#111b50"/><stop offset="1" stop-color="#03091f"/></radialGradient></defs>
-<rect width="512" height="512" rx="116" fill="url(#bg)"/>
-<path d="M256 30 455 145v222L256 482 57 367V145Z" fill="none" stroke="url(#g)" stroke-width="19" stroke-linejoin="round"/>
-<g fill="none" stroke="#20dfff" stroke-width="17" stroke-linecap="round" stroke-linejoin="round"><path d="m160 185 96-55 96 55-96 55Z"/><path d="m160 327 96-55 96 55-96 55Z"/><path d="M256 240v32M160 185l96 87 96-87"/></g>
-<g fill="#8c4dff" stroke="#24eaff" stroke-width="8"><circle cx="160" cy="185" r="22"/><circle cx="256" cy="130" r="22"/><circle cx="352" cy="185" r="22"/><circle cx="160" cy="327" r="22"/><circle cx="256" cy="272" r="22"/><circle cx="352" cy="327" r="22"/></g><circle cx="256" cy="256" r="31" fill="#12dfff" stroke="#fff" stroke-width="7"/>
+<defs><linearGradient id="edge" x1="60" y1="30" x2="450" y2="480"><stop stop-color="#b34cff"/><stop offset=".52" stop-color="#267cff"/><stop offset="1" stop-color="#00f1d5"/></linearGradient><radialGradient id="back"><stop stop-color="#14285d"/><stop offset="1" stop-color="#03091e"/></radialGradient></defs>
+<rect width="512" height="512" rx="112" fill="url(#back)"/>
+<path d="M256 35 444 144v224L256 477 68 368V144Z" fill="none" stroke="url(#edge)" stroke-width="22" stroke-linejoin="round"/>
+<g fill="none" stroke="#18dff5" stroke-width="17" stroke-linecap="round" stroke-linejoin="round"><path d="M155 176 256 118 357 176 357 292 256 350 155 292Z"/><path d="M155 176 256 234 357 176M155 292 256 234 357 292M256 118V234M256 234V350"/></g>
+<g fill="#101e57" stroke="#18e6f5" stroke-width="12"><circle cx="155" cy="176" r="23"/><circle cx="256" cy="118" r="23"/><circle cx="357" cy="176" r="23"/><circle cx="155" cy="292" r="23"/><circle cx="357" cy="292" r="23"/><circle cx="256" cy="350" r="23"/></g><circle cx="256" cy="234" r="31" fill="#19e6f3" stroke="#d8ffff" stroke-width="8"/>
 </svg>
