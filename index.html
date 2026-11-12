@@ -2,7 +2,9 @@
 <html lang="en">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="AllToolNest — everyday calculator, PDF, photo, resume and AI helper tools in one app.">\n<meta name="theme-color" content="#070d25">\n<link rel="manifest" href="./manifest.webmanifest">
+<meta name="description" content="AllToolNest — everyday calculator, PDF, photo, resume and AI helper tools in one app.">
+<meta name="theme-color" content="#070d25">
+<link rel="manifest" href="./manifest.webmanifest">\n<link rel="icon" href="./icon.svg" type="image/svg+xml">
 <title>AllToolNest — Everyday Tools in One App</title>
 <style>
 :root{--bg:#f5f7fb;--card:#fff;--ink:#172033;--muted:#667085;--brand:#5b5ce2;--line:#e6e9f2;--green:#0d9466}
@@ -74,7 +76,8 @@ footer{color:#9aadd7;border-color:#263b70}
 .bottom-nav{background:#08132ff2;border-color:#34579b;box-shadow:0 10px 35px #000a}
 .bottom-nav button{box-shadow:none;border:0;background:transparent}.bottom-nav button.active{background:linear-gradient(135deg,#087cff,#5141dc)}
 @media(max-width:480px){.welcome-card{min-height:165px;padding:17px;border-radius:20px}.hero-art{grid-template-columns:repeat(2,48px);gap:7px}.hero-art span{width:48px;height:48px;font-size:1.4rem;border-radius:14px}.hero h1{font-size:1.65rem}.hero p{font-size:.82rem;max-width:220px}.brand-mark{width:39px;height:39px}.logo{font-size:1.35rem}.card{padding:13px}.section-heading{font-size:1rem}}
-\n
+
+
 /* AllToolNest brand finish */
 .brand-lockup{gap:11px}
 .logo{font-weight:900;white-space:nowrap}
@@ -140,11 +143,13 @@ function calculate(){let a=Number(document.getElementById('n1').value),b=Number(
 function makeNames(){let b=(document.getElementById('baseName').value.trim()||'User').replace(/[^a-zA-Z0-9]/g,'');let ideas=[b+'Nova','Its'+b,b+'Spark','Real'+b,b+'Verse','The'+b+'Hub','Hey'+b,b+'Nest',b+'Wave',b+'Ace'];document.getElementById('nameResult').textContent=ideas.join(' · ')}
 document.getElementById('quality').addEventListener('input',e=>document.getElementById('qualityLabel').textContent=e.target.value+'%');
 function compressPhoto(){let f=document.getElementById('photoFile').files[0],out=document.getElementById('photoResult');if(!f){out.textContent='Please choose an image first.';return}let url=URL.createObjectURL(f),img=new Image();img.onload=()=>{let c=document.createElement('canvas'),max=2400,scale=Math.min(1,max/Math.max(img.width,img.height));c.width=Math.round(img.width*scale);c.height=Math.round(img.height*scale);c.getContext('2d').drawImage(img,0,0,c.width,c.height);c.toBlob(blob=>{let link=URL.createObjectURL(blob);out.innerHTML='<p>Original: '+(f.size/1024).toFixed(1)+' KB · Compressed: '+(blob.size/1024).toFixed(1)+' KB</p><a class="btn" download="toolnest-compressed.jpg" href="'+link+'">Download compressed image</a>';URL.revokeObjectURL(url)},'image/jpeg',Number(document.getElementById('quality').value)/100)};img.onerror=()=>out.textContent='Could not read this image.';img.src=url}
-function printText(){let title=document.getElementById('pdfTitle').value||'My Document',txt=document.getElementById('pdfText').value;printWindow('<h1>'+escapeHtml(title)+'</h1><div>'+escapeHtml(txt).replace(/\n/g,'<br>')+'</div>')}
+function printText(){let title=document.getElementById('pdfTitle').value||'My Document',txt=document.getElementById('pdfText').value;printWindow('<h1>'+escapeHtml(title)+'</h1><div>'+escapeHtml(txt).replace(/
+/g,'<br>')+'</div>')}
 function escapeHtml(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
 function printWindow(content){let w=window.open('','_blank');if(!w){alert('Allow pop-ups for this page, then try again.');return}w.document.write('<!doctype html><html><head><title>ToolNest document</title><meta charset="utf-8"><style>body{font:16px/1.6 Arial,sans-serif;max-width:800px;margin:40px auto;padding:0 24px;color:#222}h1{border-bottom:2px solid #555;padding-bottom:10px}pre{white-space:pre-wrap}@media print{body{margin:15mm auto}}</style></head><body>'+content+'<script>if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}));}</script>
 </body></html>');w.document.close();w.focus();setTimeout(()=>w.print(),300)}
-function buildResume(){let name=document.getElementById('rName').value||'Your Name',contact=document.getElementById('rContact').value,obj=document.getElementById('rObjective').value,skills=document.getElementById('rSkills').value,exp=document.getElementById('rExperience').value,edu=document.getElementById('rEducation').value;let h='<div id="resumePreview"><h1>'+escapeHtml(name)+'</h1><p>'+escapeHtml(contact)+'</p>';[['CAREER OBJECTIVE',obj],['SKILLS',skills],['WORK EXPERIENCE',exp],['EDUCATION',edu]].forEach(([t,v])=>{if(v)h+='<h2>'+t+'</h2><p>'+escapeHtml(v).replace(/\n/g,'<br>')+'</p>'});h+='</div>';document.getElementById('resumeResult').innerHTML='<div class="result">'+h+'</div>'}
+function buildResume(){let name=document.getElementById('rName').value||'Your Name',contact=document.getElementById('rContact').value,obj=document.getElementById('rObjective').value,skills=document.getElementById('rSkills').value,exp=document.getElementById('rExperience').value,edu=document.getElementById('rEducation').value;let h='<div id="resumePreview"><h1>'+escapeHtml(name)+'</h1><p>'+escapeHtml(contact)+'</p>';[['CAREER OBJECTIVE',obj],['SKILLS',skills],['WORK EXPERIENCE',exp],['EDUCATION',edu]].forEach(([t,v])=>{if(v)h+='<h2>'+t+'</h2><p>'+escapeHtml(v).replace(/
+/g,'<br>')+'</p>'});h+='</div>';document.getElementById('resumeResult').innerHTML='<div class="result">'+h+'</div>'}
 function printResume(){buildResume();let el=document.getElementById('resumePreview');if(!el.innerText.trim()){alert('Please enter your resume details first.');return}printWindow(el.innerHTML)}
 function makePrompt(){let topic=document.getElementById('aiTopic').value.trim();if(!topic){alert('Please enter what you need help with.');return}document.getElementById('promptResult').style.display='block';document.getElementById('promptResult').textContent='Help me with: '+topic+'. Use a '+document.getElementById('aiTone').value.toLowerCase()+' tone. Give a useful, accurate answer with clear steps and examples where appropriate.';document.getElementById('copyPrompt').style.display='inline-flex'}
 function copyPrompt(){navigator.clipboard.writeText(document.getElementById('promptResult').textContent).then(()=>document.getElementById('copyPrompt').textContent='Copied!').catch(()=>alert('Select and copy the prompt text manually.'))}
