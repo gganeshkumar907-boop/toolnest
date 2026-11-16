@@ -1,0 +1,11 @@
+{
+  "appId": "com.alltoolnest.app",
+  "appName": "AllToolNest",
+  "webDir": "www",
+  "server": {
+    "androidScheme": "https"
+  },
+  "android": {
+    "allowMixedContent": false
+  }
+}
