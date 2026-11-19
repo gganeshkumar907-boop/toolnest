@@ -13,6 +13,8 @@ button,input,textarea,select{font:inherit}button{cursor:pointer}
 .brand{display:flex;align-items:center;gap:9px;min-width:0}.brand-symbol{width:43px;height:43px;flex:none;object-fit:contain;filter:drop-shadow(0 0 9px #00b9ff66)}
 .brand-name{font-size:1.32rem;font-weight:900;letter-spacing:-.7px;line-height:1.05;white-space:nowrap}.brand-name span{color:var(--cyan)}.tagline{font-size:.62rem;color:#aebce1;margin-top:4px}
 .premium{border:1px solid #7d61d6;background:linear-gradient(135deg,#21194c,#36246b);color:#ffe18b;border-radius:999px;padding:7px 10px;font-size:.76rem;white-space:nowrap}
+.quick-tools{display:grid;grid-template-columns:repeat(2,34px);grid-template-rows:repeat(2,34px);gap:4px;flex:none}.quick-tools button{border:1px solid #28487d;border-radius:9px;background:linear-gradient(140deg,#182b57,#0c1733);color:#bcecff;padding:1px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0;box-shadow:0 0 6px #087bff22}.quick-tools button span{font-size:13px;line-height:1.1}.quick-tools button small{font-size:7px;color:#aebde0;line-height:1}.quick-tools button:active{border-color:#19d9f4;background:#193d7d}
+.hero{display:none}
 .hero{margin:10px 0 7px;min-height:125px;border:1px solid #344a9a;border-radius:17px;overflow:hidden;position:relative;padding:12px;background:radial-gradient(ellipse at 76% 48%,#123d91 0,#151b5b 34%,#050b24 78%);box-shadow:0 13px 35px #020616}
 .hero:before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(155deg,transparent 0 31px,#123d8b33 32px 34px);opacity:.75}
 .hero:after{content:"";position:absolute;left:-8%;right:-8%;bottom:-42px;height:75px;border-top:2px solid #00dfff;border-radius:50%;filter:drop-shadow(0 0 10px #586bff)}
@@ -55,8 +57,8 @@ footer{text-align:center;color:#7184ad;font-size:.72rem;padding:26px 12px 12px}
 </style></head>
 <body>
 <header class="app-header">
- <div class="topbar"><div class="brand"><img class="brand-symbol" src="./icon.svg" alt="AllToolNest logo"><div><div class="brand-name">AllTool<span>Nest</span></div><div class="tagline">Simple Tools. Less Hassle.</div></div></div><div class="premium">♛ Premium</div></div>
- <section class="hero" aria-label="AllToolNest tools banner"><div class="hero-content"><div class="banner-brand"><img src="./icon.svg" alt=""><div><strong>AllToolNest</strong><small>Simple Tools. Less Hassle.</small></div></div><p class="banner-line">All your everyday tools, together in one place.</p><img class="banner-art" src="./banner-icons.jpg" alt="Original AllToolNest glowing tool icons"></div></section><div class="hello-strip"><strong>Hello, Ganesh</strong><span>Your everyday tools, all in one place.</span></div>
+ <div class="topbar"><div class="brand"><img class="brand-symbol" src="./icon.svg" alt="AllToolNest logo"><div><div class="brand-name">AllTool<span>Nest</span></div><div class="tagline">Simple Tools. Less Hassle.</div></div></div><div class="quick-tools" aria-label="Quick tools"><button data-quick="photo" aria-label="Photo Tools"><span>▧</span><small>Photo</small></button><button data-quick="calc" aria-label="Calculator"><span>▦</span><small>Calc</small></button><button data-quick="pdf" aria-label="PDF Tools"><span>▤</span><small>PDF</small></button><button data-quick="ai" aria-label="AI Prompt Helper"><span>✣</span><small>AI</small></button></div></div>
+ <div class="hello-strip"><strong>Hello, Ganesh</strong><span>Your everyday tools, all in one place.</span></div>
  <div class="search-wrap"><span>⌕</span><input id="search" placeholder="Search tools..." aria-label="Search tools"></div>
 </header>
 <main id="home">
@@ -95,6 +97,7 @@ const $=id=>document.getElementById(id);
 function showTool(id){ids.forEach(x=>$(x).classList.toggle('active',x===id));$('home').scrollIntoView({behavior:'smooth',block:'start'});setTimeout(()=>$(id).scrollIntoView({behavior:'smooth',block:'nearest'}),80)}
 function goHome(){ids.forEach(x=>$(x).classList.remove('active'));window.scrollTo({top:0,behavior:'smooth'})}
 document.querySelectorAll('.tool-tile').forEach(b=>b.addEventListener('click',()=>showTool(b.dataset.id)));
+document.querySelectorAll('[data-quick]').forEach(b=>b.addEventListener('click',()=>showTool(b.dataset.quick)));
 document.querySelectorAll('[data-back]').forEach(b=>b.addEventListener('click',goHome));
 $('seeAll').addEventListener('click',()=>{$('search').focus();$('toolGrid').scrollIntoView({behavior:'smooth',block:'center'})});
 $('search').addEventListener('input',e=>{const q=e.target.value.toLowerCase().trim();let n=0;document.querySelectorAll('.tool-tile').forEach(b=>{const ok=(b.dataset.key+' '+b.innerText).toLowerCase().includes(q);b.style.display=ok?'':'none';if(ok)n++});$('empty').style.display=n?'none':'block'});
