@@ -18,21 +18,26 @@ jobs:
           java-version: '17'
       - name: Install Android SDK packages
         run: |
-          SDKMANAGER="${ANDROID_HOME}/cmdline-tools/16.0/bin/sdkmanager"
-          if [ ! -x "$SDKMANAGER" ]; then SDKMANAGER="$(find "$ANDROID_HOME/cmdline-tools" -name sdkmanager -type f | head -n 1)"; fi
-          echo "Using SDK manager: $SDKMANAGER"
+          SDKMANAGER="$(find "$ANDROID_HOME/cmdline-tools" -name sdkmanager -type f | head -n 1)"
           yes | "$SDKMANAGER" --licenses >/dev/null || true
           "$SDKMANAGER" --install "platforms;android-35" "build-tools;35.0.0"
       - name: Set up Gradle
         uses: gradle/actions/setup-gradle@v4
         with:
           gradle-version: '8.9'
-      - name: Build debug APK
+      - name: Build APK
         run: gradle --no-daemon assembleDebug
         working-directory: android
+      - name: Verify APK package and signature
+        run: |
+          APK="android/app/build/outputs/apk/debug/app-debug.apk"
+          "$ANDROID_HOME/build-tools/35.0.0/aapt" dump badging "$APK" | tee /tmp/apk-badging.txt
+          grep -q "package: name='com.alltoolnest.mobile'" /tmp/apk-badging.txt
+          "$ANDROID_HOME/build-tools/35.0.0/apksigner" verify --verbose "$APK"
+          test "$(stat -c%s "$APK")" -gt 15000
       - name: Upload installable APK
         uses: actions/upload-artifact@v4
         with:
-          name: AllToolNest-debug-apk
+          name: AllToolNest-Android-APK
           path: android/app/build/outputs/apk/debug/app-debug.apk
           if-no-files-found: error
