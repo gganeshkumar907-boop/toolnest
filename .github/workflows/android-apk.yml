@@ -1,4 +1,5 @@
 name: Build AllToolNest Android APK
+# Rebuild after enabling Android photo selection and print support
 on:
   workflow_dispatch:
   push:
