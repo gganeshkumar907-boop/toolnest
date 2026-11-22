@@ -1,0 +1,1 @@
+AllToolNest Android project. Package ID: com.alltoolnest.mobile. Build from android-build branch.
