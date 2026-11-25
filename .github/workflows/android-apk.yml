@@ -1,5 +1,5 @@
 name: Build AllToolNest Android APK
-# Rebuild after enabling Android photo selection and print support
+# Build a clean standalone package, then verify package ID and APK signature.
 on:
   workflow_dispatch:
   push:
@@ -29,16 +29,16 @@ jobs:
       - name: Build APK
         run: gradle --no-daemon assembleDebug
         working-directory: android
-      - name: Verify APK package and signature
+      - name: Verify standalone package and signature
         run: |
           APK="android/app/build/outputs/apk/debug/app-debug.apk"
           "$ANDROID_HOME/build-tools/35.0.0/aapt" dump badging "$APK" | tee /tmp/apk-badging.txt
-          grep -q "package: name='com.alltoolnest.mobile'" /tmp/apk-badging.txt
+          grep -q "package: name='com.alltoolnest.fresh'" /tmp/apk-badging.txt
           "$ANDROID_HOME/build-tools/35.0.0/apksigner" verify --verbose "$APK"
           test "$(stat -c%s "$APK")" -gt 15000
-      - name: Upload installable APK
+      - name: Upload one installable APK
         uses: actions/upload-artifact@v4
         with:
-          name: AllToolNest-Android-APK
+          name: AllToolNest-Fresh-APK
           path: android/app/build/outputs/apk/debug/app-debug.apk
           if-no-files-found: error
