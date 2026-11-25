@@ -46,6 +46,9 @@ jobs:
           python - <<'PY'
           from PIL import Image
           import os
+          import glob
+          for old in glob.glob('android/app/src/main/res/mipmap-*/ic_launcher*.jpg'):
+              os.remove(old)
           source = Image.open('assets/alltoolnest-app-icon.png').convert('RGBA')
           sizes = {'mipmap-mdpi':48,'mipmap-hdpi':72,'mipmap-xhdpi':96,'mipmap-xxhdpi':144,'mipmap-xxxhdpi':192}
           for folder, size in sizes.items():
