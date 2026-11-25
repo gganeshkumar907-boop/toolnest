@@ -38,8 +38,6 @@ jobs:
           cp index.html manifest.webmanifest sw.js icon.svg banner-icons.jpg www/
       - name: Install Capacitor
         run: npm install
-      - name: Generate Android project
-        run: npx cap add android
       - name: Sync app files
         run: npx cap sync android
       - name: Apply AllToolNest launcher icon
