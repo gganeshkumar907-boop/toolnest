@@ -4,10 +4,11 @@ android {
     namespace 'com.alltoolnest.app'
     compileSdk 35
     defaultConfig {
-        applicationId 'com.alltoolnest.mobile'
+        // New standalone package: does not replace or conflict with the earlier app.
+        applicationId 'com.alltoolnest.fresh'
         minSdk 23
         targetSdk 35
-        versionCode 2
-        versionName '1.1'
+        versionCode 1
+        versionName '1.0'
     }
 }
