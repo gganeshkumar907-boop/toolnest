@@ -135,7 +135,7 @@ public class MainActivity extends Activity {
         if (webView != null) {
             webView.evaluateJavascript(
                 "(function(){var s=document.querySelector('.tool-screen.active');if(s){goHome();return 'tool';}return 'home';})()",
-                value -> { if ("\\"home\\"".equals(value)) finish(); });
+                value -> { if ("\"home\"".equals(value)) finish(); });
         } else super.onBackPressed();
     }
 }
