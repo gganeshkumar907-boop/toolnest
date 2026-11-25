@@ -47,7 +47,7 @@ input,textarea,select{width:100%;border:1px solid #354a7a;border-radius:11px;bac
 .result{margin-top:12px;padding:13px;border:1px solid #267a70;border-radius:12px;background:#103d43;color:#d0fff4;overflow-wrap:anywhere}
 .calc-display{min-height:105px;padding:17px 16px;margin-bottom:12px;border:1px solid #2c3c72;border-radius:16px;background:linear-gradient(145deg,#0c1531,#111b3b);display:flex;flex-direction:column;align-items:flex-end;justify-content:center;gap:7px}
 .calc-expression{font-size:1rem;color:#aebbe0;min-height:24px}.calc-value{font-size:2.1rem;font-weight:750;letter-spacing:.4px}
-.calc-keys{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}.calc-keys button{min-height:48px;border:1px solid #273966;border-radius:13px;background:#1b274b;color:white;font-size:1.05rem;font-weight:700}.calc-keys .operator{background:linear-gradient(145deg,#5435c9,#7145f1);border-color:#8068ff}.calc-keys .equals{background:linear-gradient(145deg,#6b3df1,#9343ee)}.calc-keys .zero{grid-column:span 2}
+.calc-keys{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}.calc-keys button{min-height:48px;border:1px solid #273966;border-radius:13px;background:#1b274b;color:white;font-size:1.05rem;font-weight:700}.calc-keys .operator{background:linear-gradient(145deg,#5435c9,#7145f1);border-color:#8068ff}.calc-keys .equals{background:linear-gradient(145deg,#6b3df1,#9343ee)}.calc-keys .zero{grid-column:span 1}
 .list-tool{display:flex;align-items:center;gap:12px;padding:13px 4px;border-bottom:1px solid #27365e}.list-tool:last-child{border:0}.list-tool .list-icon{width:39px;height:39px;border-radius:11px;display:grid;place-items:center;background:#263c89;font-size:1.2rem}.list-tool strong{font-size:.86rem}.list-tool small{display:block;color:#9eafd2;font-size:.72rem}.list-tool .arrow{margin-left:auto;color:#a9b9dc}
 .empty{display:none;padding:20px;text-align:center;color:#aab9dc}.bottom-nav{position:fixed;z-index:30;bottom:8px;left:10px;right:10px;max-width:570px;margin:auto;display:grid;grid-template-columns:repeat(4,1fr);gap:4px;padding:7px;border:1px solid #2d4379;border-radius:21px;background:#080f29f2;box-shadow:0 10px 35px #000b;backdrop-filter:blur(16px)}
 .bottom-nav button{border:0;border-radius:14px;background:transparent;color:#aab8d7;padding:7px 3px;display:flex;flex-direction:column;align-items:center;gap:2px;font-size:.68rem}.bottom-nav button span{font-size:1.15rem}.bottom-nav button.active{background:linear-gradient(135deg,#273b99,#4b34b6);color:#fff}
@@ -75,13 +75,12 @@ footer{text-align:center;color:#7184ad;font-size:.72rem;padding:26px 12px 12px}
  <section class="tool-screen" id="calc">
   <div class="screen-head"><button class="back" data-back>‹</button><h2>Calculator</h2><span class="screen-icon">◷</span></div>
   <div class="calc-display"><div class="calc-expression" id="calcExpr">Ready</div><div class="calc-value" id="calcValue">0</div></div>
-  <button class="secondary" data-keycalc="⌫" style="width:100%;margin:0 0 8px;font-size:1rem">⌫ Backspace</button>
   <div class="calc-keys">
    <button data-keycalc="AC">AC</button><button data-keycalc="±">+/-</button><button data-keycalc="%">%</button><button class="operator" data-keycalc="÷">÷</button>
    <button data-keycalc="7">7</button><button data-keycalc="8">8</button><button data-keycalc="9">9</button><button class="operator" data-keycalc="×">×</button>
    <button data-keycalc="4">4</button><button data-keycalc="5">5</button><button data-keycalc="6">6</button><button class="operator" data-keycalc="−">−</button>
    <button data-keycalc="1">1</button><button data-keycalc="2">2</button><button data-keycalc="3">3</button><button class="operator" data-keycalc="+">+</button>
-   <button class="zero" data-keycalc="0">0</button><button data-keycalc=".">.</button><button class="equals" data-keycalc="=">=</button>
+   <button data-keycalc="0">0</button><button data-keycalc=".">.</button><button class="equals" data-keycalc="=">=</button><button data-keycalc="⌫" aria-label="Backspace">⌫</button>
   </div>
  </section>
  <section class="tool-screen" id="pdf"><div class="screen-head"><button class="back" data-back>‹</button><h2>PDF Tools</h2><span class="screen-icon">♛</span></div><div class="result">Work with PDFs easily<br><small>Create, print and save your documents</small></div><div class="list-tool"><span class="list-icon">▤</span><div><strong>Save as PDF</strong><small>Convert text or a page to PDF</small></div><span class="arrow">›</span></div><div class="field"><label>Document title</label><input id="pdfTitle" value="My Document"></div><div class="field"><label>Your text</label><textarea id="pdfText" placeholder="Type your document here..."></textarea></div><button class="primary" id="makePdf">Save as PDF</button></section>
