@@ -45,6 +45,18 @@ jobs:
           unzip -p "$APK" assets/public/index.html | grep -q 'id="resume"'
           unzip -p "$APK" assets/public/index.html | grep -q 'id="names"'
           unzip -p "$APK" assets/public/index.html | grep -q 'id="ai"'
+      - name: Install and launch APK on Android emulator
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 35
+          arch: x86_64
+          profile: pixel_2
+          script: |
+            set -euo pipefail
+            APK="android/app/build/outputs/apk/debug/app-debug.apk"
+            adb install "$APK"
+            adb shell monkey -p com.alltoolnest.fresh 1
+            adb shell pm path com.alltoolnest.fresh
       - name: Upload one installable APK
         uses: actions/upload-artifact@v4
         with:
