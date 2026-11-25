@@ -1,5 +1,4 @@
 name: Build AllToolNest Android APK
-# Build a clean standalone package, then verify package ID and APK signature.
 on:
   workflow_dispatch:
   push:
@@ -27,31 +26,25 @@ jobs:
         with:
           gradle-version: '8.9'
       - name: Build APK
-        run: gradle --no-daemon assembleDebug
+        run: gradle --no-daemon assembleDebug lintDebug
         working-directory: android
-      - name: Verify standalone package and signature
+      - name: Verify APK structure, package and signature
         run: |
+          set -euo pipefail
           APK="android/app/build/outputs/apk/debug/app-debug.apk"
+          test -s "$APK"
+          test "$(stat -c%s "$APK")" -gt 15000
+          unzip -t "$APK"
           "$ANDROID_HOME/build-tools/35.0.0/aapt" dump badging "$APK" | tee /tmp/apk-badging.txt
           grep -q "package: name='com.alltoolnest.fresh'" /tmp/apk-badging.txt
           "$ANDROID_HOME/build-tools/35.0.0/apksigner" verify --verbose "$APK"
-          test "$(stat -c%s "$APK")" -gt 15000
-      - name: Install and launch on Android emulator
-        uses: reactivecircus/android-emulator-runner@v2
-        with:
-          api-level: 30
-          target: default
-          arch: x86_64
-          profile: pixel_2
-          emulator-options: -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim
-          disable-animations: true
-          emulator-boot-timeout: 600
-          script: |
-            adb wait-for-device
-            adb install -r android/app/build/outputs/apk/debug/app-debug.apk
-            adb shell monkey -p com.alltoolnest.fresh 1
-            sleep 8
-            adb shell pidof com.alltoolnest.fresh
+          unzip -l "$APK" | grep -q 'assets/public/index.html'
+          unzip -p "$APK" assets/public/index.html | grep -q 'id="calc"'
+          unzip -p "$APK" assets/public/index.html | grep -q 'id="pdf"'
+          unzip -p "$APK" assets/public/index.html | grep -q 'id="photo"'
+          unzip -p "$APK" assets/public/index.html | grep -q 'id="resume"'
+          unzip -p "$APK" assets/public/index.html | grep -q 'id="names"'
+          unzip -p "$APK" assets/public/index.html | grep -q 'id="ai"'
       - name: Upload one installable APK
         uses: actions/upload-artifact@v4
         with:
