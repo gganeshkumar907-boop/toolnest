@@ -36,6 +36,18 @@ jobs:
           grep -q "package: name='com.alltoolnest.fresh'" /tmp/apk-badging.txt
           "$ANDROID_HOME/build-tools/35.0.0/apksigner" verify --verbose "$APK"
           test "$(stat -c%s "$APK")" -gt 15000
+      - name: Install and launch on Android emulator
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 35
+          target: google_apis
+          arch: x86_64
+          profile: pixel_2
+          script: |
+            adb install -r android/app/build/outputs/apk/debug/app-debug.apk
+            adb shell monkey -p com.alltoolnest.fresh 1
+            sleep 8
+            adb shell pidof com.alltoolnest.fresh
       - name: Upload one installable APK
         uses: actions/upload-artifact@v4
         with:
